@@ -5,3 +5,13 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+puts 'DEFAULT USERS'
+[
+ { username: ENV['ADMIN_NAME'].dup, password: ENV['ADMIN_PASSWORD'].dup },
+ { username: "user", password: "changeme" },
+].each do |p|
+  user = User.find_or_create_by(username: p[:username])
+  user.update(password: p[:password])
+  puts 'user: ' << user.username
+end
