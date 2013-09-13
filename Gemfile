@@ -18,6 +18,7 @@ end
 
 gem 'devise'
 gem 'haml-rails'
+gem 'figaro'
 
 # Use CoffeeScript for .js.coffee assets and views
 gem 'coffee-rails', '~> 4.0.0'
