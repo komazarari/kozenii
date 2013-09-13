@@ -63,7 +63,7 @@ GEM
       cucumber (>= 1.2.0)
       nokogiri (>= 1.5.0)
       rails (>= 3.0.0)
-    database_cleaner (1.1.1)
+    database_cleaner (1.0.1)
     devise (3.1.0)
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.1)
@@ -204,7 +204,7 @@ DEPENDENCIES
   capybara
   coffee-rails (~> 4.0.0)
   cucumber-rails
-  database_cleaner
+  database_cleaner (< 1.1.0)
   devise
   factory_girl_rails
   figaro
