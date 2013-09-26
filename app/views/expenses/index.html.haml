@@ -1,0 +1,23 @@
+= link_to expenses_path do
+  %h2.page-header.span10 Expenses
+
+%table.table.table-condensed.table-striped#expenses
+  %thead
+    %tr
+      %th ID
+      %th= t(:_date)
+      %th= t(:spend_for)
+      %th= t(:amount)
+      %th= t(:edit)
+      %th= t(:delete)
+  %tbody
+    - @expenses.each do |e|
+      %tr
+        %td= e.id
+        %td= e.used_date
+        %td= e.spend_for[0,20]
+        %td.num= number_to_currency e.amount
+        %td
+          %i.icon-edit
+        %td
+          %i.icon-trash
