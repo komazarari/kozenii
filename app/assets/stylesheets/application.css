@@ -11,3 +11,11 @@
  *= require_self
  *= require_tree .
  */
+
+.inline {
+    display: inline;
+}
+
+.controls select {
+    width: auto;
+}

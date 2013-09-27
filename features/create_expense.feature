@@ -5,5 +5,6 @@ Feature: Create expenses
 
     Scenario: Creating new expense
       Given I am logged in
-      When I click a link to create "expense"
-      Then I should be on the new "expense" page
+      When I look at the list of "expense"
+       And I click a link to create "expense"
+      Then I should be on the new expense page

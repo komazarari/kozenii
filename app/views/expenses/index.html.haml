@@ -1,5 +1,8 @@
-= link_to expenses_path do
-  %h2.page-header.span10 Expenses
+.row
+  .span10.page-header
+    = link_to expenses_path do
+      %h2.span2.inline Expenses
+    = link_to t(:new), new_expense_path, { class: "span2 offset4 inline btn", id: "new_expense" }
 
 %table.table.table-condensed.table-striped#expenses
   %thead

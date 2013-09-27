@@ -1,0 +1,28 @@
+- if @expense.errors.any?
+  #error_explanation
+    %ul
+      - @expense.errors.full_messages.each do |msg|
+        %li= msg
+= form_for(@expense, html: {class: "form-horizontal"}) do |f|
+  %fieldset
+    .control-group
+      .controls.small-text
+        = t(:required, default: 'required(*)')
+    .control-group
+      = f.label :used_date, t(:used_date) + '*', class: "control-label"
+      .controls
+        = f.date_select :used_date, {use_month_numbers: true, order: [:year, :month, :day]}, {class: "date_select"}
+    .control-group
+      = f.label :amount, t(:amount) + '*', class: "control-label"
+      .controls
+        = f.number_field :amount
+    .control-group
+      = f.label :spend_for, t(:spend_for) + '*', class: "control-label"
+      .controls
+        = f.text_field :spend_for
+    .control-group
+      = f.label :comment, t(:comment), class: "control-label"
+      .controls
+        = f.text_field :comment
+    .form-actions
+      = f.submit t(:submit, default: "Submit"), class: "btn btn-primary"

@@ -1,9 +1,11 @@
 When(/^I click a link to create "(.*?)"$/) do |arg1|
-  pending # express the regexp above with the code you wish you had
+  click_on "new_#{arg1}"
 end
 
-Then(/^I should be on the new "(.*?)" page$/) do |arg1|
-  pending # express the regexp above with the code you wish you had
+Then(/^I should be on the new expense page$/) do
+  page.should have_field("expense_spend_for")
+  page.should have_field("expense_amount")
+  page.should have_field("expense_comment")
 end
 
 Given(/^Some "(.*?)" items exist$/) do |arg1|
