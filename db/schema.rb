@@ -18,8 +18,8 @@ ActiveRecord::Schema.define(version: 20130926085952) do
     t.integer  "amount"
     t.text     "spend_for"
     t.text     "comment"
-    t.boolean  "adjusted",   default: true
-    t.boolean  "valid_req"
+    t.boolean  "adjusted"
+    t.boolean  "valid_req",  default: true
     t.datetime "created_at"
     t.datetime "updated_at"
   end

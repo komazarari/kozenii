@@ -13,7 +13,7 @@
   %tbody
     - @expenses.each do |e|
       %tr
-        %td= e.id
+        %td= link_to e.id, e, { id: "detailof_#{e.id}" }
         %td= e.used_date
         %td= e.spend_for[0,20]
         %td.num= number_to_currency e.amount
