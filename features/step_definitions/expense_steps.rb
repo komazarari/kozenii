@@ -22,12 +22,15 @@ Then(/^I should see "(.*?)" items$/) do |arg1|
   page.should have_content %r!\d{4}[-/]\d{1,2}[-/]\d{1,2}!
 end
 
-When(/^I click a name of "(.*?)"$/) do |arg1|
-  pending # express the regexp above with the code you wish you had
+When(/^I click a id-number of "(.*?)"$/) do |arg1|
+  @item = arg1.capitalize.constantize.last
+  click_link @item.id
 end
 
 Then(/^I should see detail of an "(.*?)" item$/) do |arg1|
-  pending # express the regexp above with the code you wish you had
+  page.should have_content %r!\d{4}[-/]\d{1,2}[-/]\d{1,2}!
+  page.should have_content @item.spend_for
+  page.should have_content number_to_currency(@item.amount)
 end
 
 Given(/^I am admin user$/) do

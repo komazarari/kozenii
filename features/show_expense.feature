@@ -12,5 +12,6 @@ Feature: Show expenses
     Scenario: Viewing an expense item
       Given I am logged in
        And Some "expense" items exist
-      When I click a name of "expense"
+      When I look at the list of "expenses"
+       And I click a id-number of "expense"
       Then I should see detail of an "expense" item
