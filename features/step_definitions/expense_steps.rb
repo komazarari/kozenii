@@ -46,3 +46,15 @@ end
 Then(/^I should be on the edit "(.*?)" page$/) do |arg1|
   pending # express the regexp above with the code you wish you had
 end
+
+When(/^I create a new expense$/) do
+  visit new_expense_path
+  fill_in 'expense_amount', with: "3210"
+  fill_in 'expense_spend_for', with: "for my new bag"
+  click_button I18n.t(:submit, default: "Submit")
+end
+
+Then(/^the expense should be in the expenses page$/) do
+  visit expenses_path
+  page.should have_content "for my new bag"
+end
