@@ -55,11 +55,13 @@ group :test, :development do
   gem "rspec-rails", "~> 2.6"
   gem 'factory_girl_rails'
   gem "spring"
+  gem 'guard-spring'
 end
 
 group :test do
   gem 'cucumber-rails', :require => false
   gem 'database_cleaner', '<1.1.0'
   gem 'capybara'
+  gem 'poltergeist'
   gem "simplecov", require: false
 end
