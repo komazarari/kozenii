@@ -1,0 +1,17 @@
+Feature: Show incomes
+  As a visitor to the website
+  I want to show the income items
+  so that I can get details of income items
+
+  Scenario: Viewing incomes
+    Given I am logged in
+    And Some "income" items exist
+    When I look at the list of "incomes"
+    Then I should see "incomes" items
+
+  Scenario: Viewing an expense item
+    Given I am logged in
+    And Some "income" items exist
+    When I look at the list of "incomes"
+    And I click a id-number of "income"
+    Then I should see detail of an "income" item
