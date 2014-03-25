@@ -1,0 +1,28 @@
+- if @income.errors.any?
+  #error_explanation
+    %ul
+      - @income.errors.full_messages.each do |msg|
+        %li= msg
+= form_for(@income, html: {class: "form-horizontal"}) do |f|
+  %fieldset
+    .control-group
+      .controls.small-text
+        = t(:required, default: 'required(*)')
+    .control-group
+      = f.label :obtained_date, t(:obtained_date) + '*', class: "control-label"
+      .controls
+        = f.date_select :obtained_date, {use_month_numbers: true, order: [:year, :month, :day]}, {class: "date_select"}
+    .control-group
+      = f.label :amount, t(:amount) + '*', class: "control-label"
+      .controls
+        = f.number_field :amount
+    .control-group
+      = f.label :obtained_by, t(:obtained_by) + '*', class: "control-label"
+      .controls
+        = f.text_field :obtained_by
+    .control-group
+      = f.label :comment, t(:comment), class: "control-label"
+      .controls
+        = f.text_field :comment
+    .form-actions
+      = f.submit t(:submit, default: "Submit"), class: "btn btn-primary"

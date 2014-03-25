@@ -1,0 +1,21 @@
+- if @income.valid_req
+  %dl.dl-horizontal
+    %dt No.
+    %dd= @income.id
+    %dt= t(:_date)
+    %dd= l @income.obtained_date
+    %dt= t(:obtained_by)
+    %dd= @income.obtained_by
+    %dt= t(:amount)
+    %dd= number_to_currency(@income.amount)
+    %dt= t(:comment)
+    %dd= @income.comment
+- else
+  %h4 Invalid entry
+
+%dl.dl-horizontal
+  %dt Created at
+  %dd= @income.created_at.getlocal
+  %dt Updated at
+  %dd= @income.updated_at.getlocal
+

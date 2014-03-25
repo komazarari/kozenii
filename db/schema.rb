@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130926085952) do
+ActiveRecord::Schema.define(version: 20140321061106) do
 
   create_table "expenses", force: true do |t|
     t.date     "used_date"
@@ -20,6 +20,16 @@ ActiveRecord::Schema.define(version: 20130926085952) do
     t.text     "comment"
     t.boolean  "adjusted"
     t.boolean  "valid_req",  default: true
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "incomes", force: true do |t|
+    t.date     "obtained_date"
+    t.integer  "amount"
+    t.text     "obtained_by"
+    t.text     "comment"
+    t.boolean  "valid_req",     default: true
     t.datetime "created_at"
     t.datetime "updated_at"
   end
