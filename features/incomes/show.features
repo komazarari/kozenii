@@ -9,7 +9,7 @@ Feature: Show incomes
     When I look at the list of "incomes"
     Then I should see "incomes" items
 
-  Scenario: Viewing an expense item
+  Scenario: Viewing an income item
     Given I am logged in
     And Some "income" items exist
     When I look at the list of "incomes"

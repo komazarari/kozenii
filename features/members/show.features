@@ -1,0 +1,17 @@
+Feature: Show members
+  As a visitor to the website
+  I want to show the member items
+  so that I can get details of member items
+
+  Scenario: Viewing members
+    Given I am logged in
+    And Some "member" items exist
+    When I look at the list of "members"
+    Then I should see "members" items
+
+  Scenario: Viewing an member item
+    Given I am logged in
+    And Some "member" items exist
+    When I look at the list of "members"
+    And I click a id-number of "member"
+    Then I should see detail of a "member" item
