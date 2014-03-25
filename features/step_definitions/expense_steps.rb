@@ -4,7 +4,7 @@ Then(/^I should be on the new expense page$/) do
   page.should have_field("expense_comment")
 end
 
-Then(/^I should see detail of an expense item$/) do |arg1|
+Then(/^I should see detail of an expense item$/) do
   page.should have_content %r!\d{4}[-/]\d{1,2}[-/]\d{1,2}!
   page.should have_content @item.spend_for
   page.should have_content number_to_currency(@item.amount)

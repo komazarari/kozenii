@@ -1,2 +1,24 @@
-%h1 Members#index
-%p Find me in app/views/members/index.html.haml
+.row
+  .span10.page-header
+    = link_to members_path do
+      %h2.span2.inline Members
+    = link_to t(:new), new_member_path, { class: "span2 offset4 inline btn", id: "new_member" }
+
+%table.table.table-condensed.table-striped#members
+  %thead
+    %tr
+      %th ID
+      %th= t(:fullname)
+      %th= t(:yomi)
+      %th= t(:edit)
+      %th= t(:delete)
+  %tbody
+    - @members.each do |m|
+      %tr
+        %td= link_to m.id, m, { id: "detailof_#{m.id}" }
+        %td= m.fullname
+        %td= m.yomi
+        %td
+          %i.icon-edit
+        %td
+          %i.icon-trash

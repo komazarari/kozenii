@@ -14,4 +14,4 @@ Feature: Show expenses
        And Some "expense" items exist
       When I look at the list of "expenses"
        And I click a id-number of "expense"
-      Then I should see detail of an "expense" item
+      Then I should see detail of an expense item
