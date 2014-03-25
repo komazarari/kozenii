@@ -13,5 +13,5 @@ end
 
 Then(/^the income should be in the incomes page$/) do
   visit incomes_path
-  page.should have_content "23000"
+  page.should have_content number_to_currency(23000)
 end

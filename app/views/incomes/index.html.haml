@@ -14,12 +14,12 @@
       %th= t(:edit)
       %th= t(:delete)
   %tbody
-    - @incomes.each do |e|
+    - @incomes.each do |i|
       %tr
-        %td= link_to e.id, e, { id: "detailof_#{e.id}" }
-        %td= e.used_date
-        %td= e.spend_for[0,20]
-        %td.num= number_to_currency e.amount
+        %td= link_to i.id, i, { id: "detailof_#{i.id}" }
+        %td= i.obtained_date
+        %td= i.obtained_by[0,20]
+        %td.num= number_to_currency i.amount
         %td
           %i.icon-edit
         %td
