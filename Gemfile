@@ -52,7 +52,7 @@ gem 'unicorn'
 # gem 'debugger', group: [:development, :test]
 
 group :test, :development do
-  gem "rspec-rails" , "~> 2"
+  gem "rspec-rails" , "<2.99"
   gem 'factory_girl_rails'
   gem "spring"
   gem "spring-commands-rspec"
