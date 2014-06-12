@@ -6,6 +6,7 @@ Kozenii::Application.routes.draw do
 
   resources :expenses, only: [:index, :show, :new, :create]
   resources :incomes, only: [:index, :show, :new, :create]
+  resources :members, only: [:index, :show, :new, :create]
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

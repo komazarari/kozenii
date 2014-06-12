@@ -1,0 +1,24 @@
+- if @member.errors.any?
+  #error_explanation
+    %ul
+      - @member.errors.full_messages.each do |msg|
+        %li= msg
+= form_for(@member, html: {class: "form-horizontal"}) do |f|
+  %fieldset
+    .control-group
+      .controls.small-text
+        = t(:required, default: 'required(*)')
+    .control-group
+      = f.label :fullname, t(:fullname) + '*', class: "control-label"
+      .controls
+        = f.text_field :fullname
+    .control-group
+      = f.label :yomi, t(:yomi) + '*', class: "control-label"
+      .controls
+        = f.text_field :yomi
+    .control-group
+      = f.label :nick, t(:nick) + '*', class: "control-label"
+      .controls
+        = f.text_field :nick
+    .form-actions
+      = f.submit t(:submit, default: "Submit"), class: "btn btn-primary"
