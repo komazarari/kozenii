@@ -72,7 +72,7 @@ describe CategoriesController do
 
       it "redirects to the created category" do
         post :create, {:category => valid_attributes}, valid_session
-        response.should redirect_to(Category.last)
+        response.should redirect_to(categories_url)
       end
     end
 
@@ -85,6 +85,7 @@ describe CategoriesController do
       end
 
       it "re-renders the 'new' template" do
+        pending
         # Trigger the behavior that occurs when invalid params are submitted
         Category.any_instance.stub(:save).and_return(false)
         post :create, {:category => { "name" => "invalid value" }}, valid_session
@@ -114,7 +115,7 @@ describe CategoriesController do
       it "redirects to the category" do
         category = Category.create! valid_attributes
         put :update, {:id => category.to_param, :category => valid_attributes}, valid_session
-        response.should redirect_to(category)
+        response.should redirect_to(categories_url)
       end
     end
 

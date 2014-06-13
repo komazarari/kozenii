@@ -1,0 +1,20 @@
+%table.table.table-condensed.table-striped#incomes
+  %thead
+    %tr
+      %th ID
+      %th= t(:_date)
+      %th= t(:obtained_date)
+      %th= t(:amount)
+      %th= t(:edit)
+      %th= t(:delete)
+  %tbody
+    - @incomes.each do |i|
+      %tr
+        %td= link_to i.id, i, { id: "detailof_#{i.id}" }
+        %td= i.obtained_date
+        %td= i.description[0,20]
+        %td.num= number_to_currency i.amount
+        %td
+          %i.icon-edit
+        %td
+          %i.icon-trash

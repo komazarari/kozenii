@@ -1,5 +1,5 @@
 class MembersController < ApplicationController
-  before_action :set_member, only: [:show]
+  before_action :set_member, only: [:show, :edit, :update]
   respond_to :html, :json
 
   def index
@@ -7,6 +7,8 @@ class MembersController < ApplicationController
   end
 
   def show
+    @expenses = Expense.where(member_id: @member.id)
+    @incomes = Income.where(member_id: @member.id)
   end
 
   def new
@@ -21,13 +23,25 @@ class MembersController < ApplicationController
     respond_with(@member, location: members_url)
   end
 
+  def update
+    if @member.update(member_params)
+      flash[:notice] = "Successfully updated."
+    end
+    respond_with(@member, location: members_url)
+  end
+
   private
   def set_member
     @member = Member.find(params[:id])
   end
 
   def member_params
-    params.require(:member).permit(:fullname, :nick, :yomi, :obligation)
+    params.require(:member).permit(:fullname,
+                                   :nick,
+                                   :yomi,
+                                   :part_id,
+                                   :category_id,
+                                   :obligation)
   end
 
 end

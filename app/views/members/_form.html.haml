@@ -9,6 +9,10 @@
       .controls.small-text
         = t(:required, default: 'required(*)')
     .control-group
+      = f.label :part_id, t(:part), class: "control-label"
+      .controls
+        = f.select :part_id, options_from_collection_for_select(Part.order(:show_order), :id, :name, selected: @member.part_id), {include_blank: '-'}
+    .control-group
       = f.label :fullname, t(:fullname) + '*', class: "control-label"
       .controls
         = f.text_field :fullname
@@ -20,5 +24,9 @@
       = f.label :nick, t(:nick) + '*', class: "control-label"
       .controls
         = f.text_field :nick
+    .control-group
+      = f.label :category_id, t(:category), class: "control-label"
+      .controls
+        = f.select :category_id, options_from_collection_for_select(Category.all, :id, :name, selected: @member.category_id), {include_blank: '-'} 
     .form-actions
       = f.submit t(:submit, default: "Submit"), class: "btn btn-primary"

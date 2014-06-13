@@ -10,7 +10,7 @@ class ExpensesController < ApplicationController
   end
 
   def new
-    @expense = Expense.new
+    @expense = Expense.new(expense_params)
   end
 
   def create

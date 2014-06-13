@@ -10,7 +10,7 @@ class IncomesController < ApplicationController
   end
 
   def new
-    @income = Income.new
+    @income = Income.new(income_params)
   end
 
   def create
