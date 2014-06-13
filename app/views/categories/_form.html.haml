@@ -1,0 +1,21 @@
+- if @category.errors.any?
+  #error_explanation
+    %ul
+      - @category.errors.full_messages.each do |msg|
+        %li= msg
+= form_for(@category, html: {class: "form-horizontal"}) do |f|
+  %fieldset
+    .control-group
+      = f.label :name, t(:name), class: "control-label"
+      .controls
+        = f.text_field :name
+    .control-group
+      = f.label :basic_due, t(:basic_due), class: "control-label"
+      .controls
+        = f.number_field :basic_due
+    .control-group
+      = f.label :ext_due, t(:ext_due), class: "control-label"
+      .controls
+        = f.number_field :ext_due
+    .form-actions
+      = f.submit t(:submit, default: "Submit"), class: "btn btn-primary"

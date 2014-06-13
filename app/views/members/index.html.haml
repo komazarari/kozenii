@@ -17,10 +17,10 @@
   %tbody
     - @members.part_order.each do |member|
       %tr
-        %td= member.part.try(:name)
+        %td= member.part.try(:name) || '-'
         %td= link_to member.fullname, member, { id: "detailof_#{member.id}" }
-        %td @ToDo
-        %td @ToDo
+        %td= member.paid
+        %td= member.bill
         %td @ToDo
         %td
           = link_to_if_with_block current_user.admin?, edit_member_path(member) do |n|

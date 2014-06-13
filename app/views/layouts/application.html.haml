@@ -42,6 +42,8 @@
               %li= link_to t(:members), members_path
               %li= link_to t(:expenses), expenses_path
               %li= link_to t(:incomes), incomes_path
+              - if user_signed_in? && current_user.admin?
+                %li= link_to t(:categories), categories_path
 
     .container
 
@@ -53,6 +55,9 @@
               %li= link_to t(:members), members_path
               %li= link_to t(:expenses), expenses_path
               %li= link_to t(:incomes), incomes_path
+              - if user_signed_in? && current_user.admin?
+                %li.nav-header Administrations
+                %li= link_to t(:categories), categories_path
         .span9
           = bootstrap_flash
           = yield
