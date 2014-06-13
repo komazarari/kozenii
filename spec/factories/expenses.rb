@@ -11,7 +11,7 @@ FactoryGirl.define do
     amount
     description
     comment
-    adjusted    false
+    status    "open"
     valid_req   true
   end
 end

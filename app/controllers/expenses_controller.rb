@@ -32,6 +32,6 @@ class ExpensesController < ApplicationController
                                     :description,
                                     :member_id,
                                     :comment,
-                                    :adjusted)
+                                    :status)
   end
 end
