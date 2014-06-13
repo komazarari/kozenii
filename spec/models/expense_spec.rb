@@ -9,7 +9,7 @@ describe Expense do
   it "requires a amount" do
     expect(FactoryGirl.build(:expense, amount: "")).not_to be_valid
   end
-  it "requires a spend_for" do
-    expect(FactoryGirl.build(:expense, spend_for: "")).not_to be_valid
+  it "requires a description" do
+    expect(FactoryGirl.build(:expense, description: "")).not_to be_valid
   end
 end

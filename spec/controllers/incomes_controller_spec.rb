@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe IncomesController do
   def valid_attributes
-    { obtained_date: Date.new(2013,5,1), amount: 123, obtained_by: "test" }
+    { obtained_date: Date.new(2013,5,1), amount: 123, description: "test" }
   end
 
   before  do

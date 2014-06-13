@@ -4,7 +4,7 @@ FactoryGirl.define do
   factory :income do
     obtained_date "2014-03-21"
     amount 1
-    obtained_by "MyText"
+    description "MyText"
     comment "MyText"
     valid_req false
   end

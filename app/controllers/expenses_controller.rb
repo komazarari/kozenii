@@ -27,6 +27,11 @@ class ExpensesController < ApplicationController
   end
 
   def expense_params
-    params.require(:expense).permit(:used_date, :amount, :spend_for, :comment, :adjusted)
+    params.require(:expense).permit(:used_date,
+                                    :amount,
+                                    :description,
+                                    :member_id,
+                                    :comment,
+                                    :adjusted)
   end
 end

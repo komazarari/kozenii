@@ -4,8 +4,8 @@
     %dd= @expense.id
     %dt= t(:_date)
     %dd= l @expense.used_date
-    %dt= t(:spend_for)
-    %dd= @expense.spend_for
+    %dt= t(:description)
+    %dd= @expense.description
     %dt= t(:amount)
     %dd= number_to_currency(@expense.amount)
     %dt= t(:adjusted)

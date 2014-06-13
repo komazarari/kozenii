@@ -9,7 +9,7 @@
     %tr
       %th ID
       %th= t(:_date)
-      %th= t(:spend_for)
+      %th= t(:description)
       %th= t(:amount)
       %th= t(:edit)
       %th= t(:delete)
@@ -18,7 +18,7 @@
       %tr
         %td= link_to e.id, e, { id: "detailof_#{e.id}" }
         %td= e.used_date
-        %td= e.spend_for[0,20]
+        %td= e.description[0,20]
         %td.num= number_to_currency e.amount
         %td
           %i.icon-edit
