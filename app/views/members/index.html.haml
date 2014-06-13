@@ -7,17 +7,21 @@
 %table.table.table-condensed.table-striped#members
   %thead
     %tr
-      %th ID
+      %th= t(:part) 
       %th= t(:fullname)
-      %th= t(:yomi)
+      %th= t(:paid)
+      %th= t(:bill)
+      %th= t(:category)
       %th= t(:edit)
       %th= t(:delete)
   %tbody
-    - @members.each do |m|
+    - @members.each do |member|
       %tr
-        %td= link_to m.id, m, { id: "detailof_#{m.id}" }
-        %td= m.fullname
-        %td= m.yomi
+        %td @ToDo
+        %td= link_to member.fullname, member, { id: "detailof_#{member.id}" }
+        %td @ToDo
+        %td @ToDo
+        %td @ToDo
         %td
           %i.icon-edit
         %td
