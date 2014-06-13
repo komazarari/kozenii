@@ -14,7 +14,7 @@
     = favicon_link_tag 'apple-touch-icon-114x114-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => '114x114'
     = favicon_link_tag 'apple-touch-icon-72x72-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => '72x72'
     = favicon_link_tag 'apple-touch-icon-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png'
-    = favicon_link_tag 'favicon.ico', :rel => 'shortcut icon'
+    = favicon_link_tag '/retro-coin.png', :rel => 'shortcut icon'
     = javascript_include_tag "application"
 
 
@@ -27,7 +27,7 @@
             %span.icon-bar
             %span.icon-bar
             %span.icon-bar
-          %a.brand(href="/") Kozenii
+          %a.brand(href="/")= t(:AppTitle)
           - if user_signed_in?
             .btn-group.pull-right
               %a.btn.dropdoun-toggle(data-toggle="dropdown" href="#")
@@ -35,29 +35,27 @@
                 = current_user.username
                 .caret
               %ul.dropdown-menu
-                %li= link_to t(:edit_account), edit_user_registration_path
                 %li= link_to t(:sign_out), destroy_user_session_path, :method => :delete
 
           .container.nav-collapse
             %ul.nav
-              %li= link_to "Link 1", "/path1"
-              %li= link_to "Link 2", "/path2"
-              %li= link_to "Link 3", "/path3"
+              %li= link_to t(:members), members_path
+              %li= link_to t(:expenses), expenses_path
+              %li= link_to t(:incomes), incomes_path
 
     .container
 
       .row
+        .span2.hidden-phone
+          .well.sidebar-nav
+            %ul.nav.nav-list
+              %li.nav-header Contents
+              %li= link_to t(:members), members_path
+              %li= link_to t(:expenses), expenses_path
+              %li= link_to t(:incomes), incomes_path
         .span9
           = bootstrap_flash
           = yield
-        .span3
-          .well.sidebar-nav
-            %h3 Sidebar
-            %ul.nav.nav-list
-              %li.nav-header Sidebar
-              %li= link_to "Link 1", "/path1"
-              %li= link_to "Link 2", "/path2"
-              %li= link_to "Link 3", "/path3"
 
       %footer
         %p &copy; Company 2014
