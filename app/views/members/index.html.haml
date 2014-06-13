@@ -15,9 +15,9 @@
       %th= t(:edit)
       %th= t(:delete)
   %tbody
-    - @members.each do |member|
+    - @members.part_order.each do |member|
       %tr
-        %td @ToDo
+        %td= member.part.try(:name)
         %td= link_to member.fullname, member, { id: "detailof_#{member.id}" }
         %td @ToDo
         %td @ToDo

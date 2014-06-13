@@ -1,0 +1,17 @@
+%dl.dl-horizontal
+  %dt= t(:part)
+  %dd= @member.fullname
+  %dt= t(:yomi)
+  %dd= @member.part.try(:name)
+  %dt= t(:fullname)
+  %dd= @member.yomi
+  %dt= t(:nick)
+  %dd= @member.nick
+
+%dl.dl-horizontal
+  %dt ID
+  %dd= @member.id
+  %dt Created at
+  %dd= @member.created_at.getlocal
+  %dt Updated at
+  %dd= @member.updated_at.getlocal

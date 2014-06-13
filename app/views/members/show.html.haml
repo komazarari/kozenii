@@ -1,16 +1,13 @@
-%dl.dl-horizontal
-  %dt No.
-  %dd= @member.id
-  %dt= t(:fullname)
-  %dd= l @member.fullname
-  %dt= t(:nick)
-  %dd= @member.nick
-  %dt= t(:yomi)
-  %dd= @member.yomi
+%h3= @member.fullname
+.tabbable
+  %ul.nav.nav-tabs
+    %li.active= link_to t(:base_info), "#base_info_tab", "data-toggle" => "tab"
+    %li= link_to t(:expenses), "#expenses_tab", "data-toggle" => "tab"
+    %li= link_to t(:incomes), "#incomes_tab", "data-toggle" => "tab"
 
-%dl.dl-horizontal
-  %dt Created at
-  %dd= @member.created_at.getlocal
-  %dt Updated at
-  %dd= @member.updated_at.getlocal
-
+  #base_info_tab.tab-pane.active
+    = render "show_base_info"
+  #expenses_tab.tab-pane
+    /= render "show_expenses"
+  #incomes_tab.tab-pane
+    /= render "show_incomes"

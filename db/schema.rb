@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140613055622) do
+ActiveRecord::Schema.define(version: 20140613105710) do
 
   create_table "expenses", force: true do |t|
     t.date     "used_date"
@@ -39,6 +39,14 @@ ActiveRecord::Schema.define(version: 20140613055622) do
     t.string   "nick"
     t.string   "yomi"
     t.integer  "obligation", default: 0, null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "part_id"
+  end
+
+  create_table "parts", force: true do |t|
+    t.string   "name"
+    t.integer  "show_order"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
