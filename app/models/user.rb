@@ -4,4 +4,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable
   validates :username, uniqueness: true
+
+  def admin?
+    role && role =~ /admin/
+  end
 end
