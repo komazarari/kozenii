@@ -1,9 +1,9 @@
-%h1 Home#index
-%p Find me in app/views/home/index.html.haml
+.row
+  .span10.page-header
+    %h2.span2.inline= t(:home)
+    = link_to new_expense_path, { class: "span1 offset5 inline btn btn-primary", id: "new_expense", title: "#{t(:apply_new)}" } do
+      %i.icon-pencil.icon-white
 
-- @users.each do |user|
-  %p= link_to user.username, user
-
+%h3= link_to t(:members), members_path, { title: 'members' }
 %h3= link_to t(:expenses), expenses_path, { title: 'expenses' }
 %h3= link_to t(:incomes), incomes_path, { title: 'incomes' }
-%h3= link_to t(:members), members_path, { title: 'members' }
