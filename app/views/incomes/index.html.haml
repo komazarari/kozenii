@@ -18,7 +18,7 @@
       %tr
         %td= link_to i.id, i, { id: "detailof_#{i.id}" }
         %td= i.obtained_date
-        %td= i.obtained_by[0,20]
+        %td= i.description[0,20]
         %td.num= number_to_currency i.amount
         %td
           %i.icon-edit
