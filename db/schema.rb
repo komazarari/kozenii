@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140325024943) do
+ActiveRecord::Schema.define(version: 20140613055622) do
 
   create_table "expenses", force: true do |t|
     t.date     "used_date"
@@ -56,6 +56,7 @@ ActiveRecord::Schema.define(version: 20140325024943) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "role"
   end
 
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true

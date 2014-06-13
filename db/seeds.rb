@@ -8,10 +8,10 @@
 
 puts 'DEFAULT USERS'
 [
- { username: ENV['ADMIN_NAME'].dup, password: ENV['ADMIN_PASSWORD'].dup },
- { username: "user", password: "changeme" },
+ { username: ENV['ADMIN_NAME'].dup, password: ENV['ADMIN_PASSWORD'].dup, role: "admin" },
+ { username: "user", password: "changeme", role: "user" },
 ].each do |p|
   user = User.find_or_create_by(username: p[:username])
-  user.update(password: p[:password])
+  user.update(password: p[:password], role: p[:role])
   puts 'user: ' << user.username
 end

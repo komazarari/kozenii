@@ -23,6 +23,8 @@
         %td @ToDo
         %td @ToDo
         %td
-          %i.icon-edit
+          = link_to_if_with_block current_user.admin?, edit_member_path(member) do |n|
+            %i.icon-edit
         %td
-          %i.icon-trash
+          = link_to_if_with_block current_user.admin?, member, method: :delete, data: { confirm: 'Are you sure?' } do |n|
+            %i.icon-trash
