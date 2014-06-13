@@ -1,12 +1,17 @@
 %dl.dl-horizontal
   %dt= t(:part)
+  %dd= @member.part.try(:name) || '-'
+  %dt= t(:fullname)
   %dd= @member.fullname
   %dt= t(:yomi)
-  %dd= @member.part.try(:name)
-  %dt= t(:fullname)
   %dd= @member.yomi
   %dt= t(:nick)
   %dd= @member.nick
+  %dt= t(:obligation)
+  %dd= @member.obligation
+  %dt= t(:category)
+  %dd= @member.category.try(:name) || '-'
+
 
 %dl.dl-horizontal
   %dt ID

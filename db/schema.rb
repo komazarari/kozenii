@@ -11,7 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140613124946) do
+ActiveRecord::Schema.define(version: 20140613203252) do
+
+  create_table "categories", force: true do |t|
+    t.string   "name"
+    t.integer  "basic_due",  default: 0
+    t.integer  "ext_due",    default: 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "expenses", force: true do |t|
     t.date     "used_date"
@@ -40,10 +48,11 @@ ActiveRecord::Schema.define(version: 20140613124946) do
     t.string   "fullname"
     t.string   "nick"
     t.string   "yomi"
-    t.integer  "obligation", default: 0, null: false
+    t.integer  "obligation",  default: 0, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "part_id"
+    t.integer  "category_id"
   end
 
   create_table "parts", force: true do |t|
@@ -69,7 +78,7 @@ ActiveRecord::Schema.define(version: 20140613124946) do
     t.string   "role"
   end
 
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-  add_index "users", ["username"], name: "index_users_on_username", unique: true
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+  add_index "users", ["username"], name: "index_users_on_username", unique: true, using: :btree
 
 end

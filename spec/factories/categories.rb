@@ -1,10 +1,9 @@
 # Read about factories at https://github.com/thoughtbot/factory_girl
 
 FactoryGirl.define do
-  factory :member do
-    fullname "Full Name"
-    nick "Nick"
-    yomi "nick"
-    obligation 1
+  factory :category do
+    name "MyString"
+    basic_due 20000
+    ext_due 12000
   end
 end

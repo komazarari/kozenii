@@ -22,3 +22,15 @@ puts '### Setting up Parts ###'
   part.update(show_order: p[:show_order])
   puts 'Updated part: ' << part.name
 end
+
+puts '### Setting up Categories ###'
+[
+ { name: 'レギュラー', basic_due: 20000, ext_due: 15000 },
+ { name: 'トライアル', basic_due: 5000, ext_due: 5000 },
+ { name: '学生', basic_due: 10000, ext_due: 7000 },
+ { name: 'エキストラ', basic_due: 0, ext_due: 0 },
+].each do |c|
+  category = Category.find_or_create_by(name: c[:name])
+  category.update(basic_due: c[:basic_due], ext_due: c[:ext_due] )
+  puts 'Updated category: ' << category.name
+end

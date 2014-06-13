@@ -10,18 +10,18 @@
       %th= t(:part) 
       %th= t(:fullname)
       %th= t(:paid)
-      %th= t(:bill)
+      %th= t(:remain)
       %th= t(:category)
       %th= t(:edit)
       %th= t(:delete)
   %tbody
     - @members.part_order.each do |member|
       %tr
-        %td= member.part.try(:name)
+        %td= member.part.try(:name) || '-'
         %td= link_to member.fullname, member, { id: "detailof_#{member.id}" }
-        %td @ToDo
-        %td @ToDo
-        %td @ToDo
+        %td= member.paid
+        %td= member.remain
+        %td= member.category.try(:name)
         %td
           = link_to_if_with_block current_user.admin?, edit_member_path(member) do |n|
             %i.icon-edit

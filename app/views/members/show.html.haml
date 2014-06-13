@@ -4,10 +4,16 @@
     %li.active= link_to t(:base_info), "#base_info_tab", "data-toggle" => "tab"
     %li= link_to t(:expenses), "#expenses_tab", "data-toggle" => "tab"
     %li= link_to t(:incomes), "#incomes_tab", "data-toggle" => "tab"
-
-  #base_info_tab.tab-pane.active
-    = render "show_base_info"
-  #expenses_tab.tab-pane
-    /= render "show_expenses"
-  #incomes_tab.tab-pane
-    /= render "show_incomes"
+  .tab-content
+    #base_info_tab.tab-pane.active
+      = render "show_base_info"
+    #expenses_tab.tab-pane
+      .row
+        = link_to new_expense_path(expense: {member_id: @member.id}), { class: "spen1 pull-right btn btn-primary" } do
+          %i.icon-plus.icon-white
+      = render template: "expenses/_index_items"
+    #incomes_tab.tab-pane
+      .row
+        = link_to new_income_path(income: {member_id: @member.id}), { class: "spen1 pull-right btn btn-primary" } do
+          %i.icon-plus.icon-white
+      = render template: "incomes/_index_items"
