@@ -8,8 +8,8 @@
     %dd= @expense.description
     %dt= t(:amount)
     %dd= number_to_currency(@expense.amount)
-    %dt= t(:adjusted)
-    %dd= @expense.adjusted ? t(:done) : t(:no)
+    %dt= t(:status)
+    %dd= @expense.status
     %dt= t(:comment)
     %dd= @expense.comment
 - else

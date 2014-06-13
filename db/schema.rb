@@ -11,18 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140613122640) do
+ActiveRecord::Schema.define(version: 20140613124946) do
 
   create_table "expenses", force: true do |t|
     t.date     "used_date"
     t.integer  "amount"
     t.text     "description"
     t.text     "comment"
-    t.boolean  "adjusted"
     t.boolean  "valid_req",   default: true
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "member_id"
+    t.string   "status",      default: "open"
   end
 
   create_table "incomes", force: true do |t|
