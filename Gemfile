@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 4.0'
+gem 'rails', '~> 4'
 
 gem 'sqlite3'
 
@@ -52,7 +52,8 @@ gem 'unicorn'
 # gem 'debugger', group: [:development, :test]
 
 group :test, :development do
-  gem "rspec-rails" , "<2.99"
+  gem "rspec-rails" , "~>2"
+  #  gem "rspec-rails" , "<2.99"
   gem 'factory_girl_rails'
   gem "spring"
   gem "spring-commands-rspec"
@@ -61,7 +62,7 @@ end
 
 group :test do
   gem 'cucumber-rails', :require => false
-  gem 'database_cleaner', '<1.1.0'
+  gem 'database_cleaner', '~> 1'
   gem 'capybara'
   gem 'poltergeist'
   gem "simplecov", require: false
