@@ -54,7 +54,7 @@ describe MembersController do
     end
 
     describe "with invalid params" do
-      pending
+      skip
     end
   end
 end
