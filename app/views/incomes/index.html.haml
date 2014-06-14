@@ -2,6 +2,7 @@
   .span10.page-header
     = link_to incomes_path do
       %h2.span2.inline Incomes
-    = link_to t(:new), new_income_path, { class: "span2 offset4 inline btn", id: "new_income" }
+    - if current_user.admin?
+      = link_to t(:new), new_income_path, { class: "span2 offset4 inline btn", id: "new_income" }
 
 = render "index_items"

@@ -2,7 +2,8 @@
   .span10.page-header
     = link_to categories_path do
       %h2.span2.inline Categories
-    = link_to t(:new), new_category_path, { class: "span2 offset4 inline btn", id: "new_category" }
+    - if current_user.admin?
+      = link_to t(:new), new_category_path, { class: "span2 offset4 inline btn", id: "new_category" }
 
 %table.table.table-condensed.table-striped#categories
   %thead
@@ -16,7 +17,7 @@
   %tbody
     - @categories.each do |e|
       %tr
-        %td= link_to e.id, e, { id: "detailof_#{e.id}" }
+        %td= e.id
         %td= e.name
         %td.num= number_to_currency e.basic_due
         %td.num= number_to_currency e.ext_due
