@@ -15,6 +15,8 @@
         %td= e.description[0,20]
         %td.num= number_to_currency e.amount
         %td
-          %i.icon-edit
+          = link_to_if_with_block current_user.admin?, edit_expense_path(e) do
+            %i.icon-edit
         %td
-          %i.icon-trash
+          = link_to_if_with_block current_user.admin?, e, method: :delete, data: { confirm: 'Are you sure?' } do
+            %i.icon-trash

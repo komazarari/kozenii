@@ -2,7 +2,10 @@
   .span10.page-header
     = link_to members_path do
       %h2.span2.inline Members
-    = link_to t(:new), new_member_path, { class: "span2 offset4 inline btn", id: "new_member" }
+    - if current_user.admin?
+      = link_to t(:new), new_member_path, { class: "span2 offset4 inline btn btn-primary", id: "new_member" }
+    - else
+      .span2.offset4.inline.btn.btn-primary.disabled= t(:new)
 
 %table.table.table-condensed.table-striped#members
   %thead
@@ -19,8 +22,8 @@
       %tr
         %td= member.part.try(:name) || '-'
         %td= link_to member.fullname, member, { id: "detailof_#{member.id}" }
-        %td= member.paid
-        %td= member.remain
+        %td.num= number_to_currency member.paid
+        %td.num= number_to_currency member.remain
         %td= member.category.try(:name)
         %td
           = link_to_if_with_block current_user.admin?, edit_member_path(member) do |n|
