@@ -1,5 +1,5 @@
 class MembersController < ApplicationController
-  before_action :set_member, only: [:show, :edit, :update]
+  before_action :set_member, only: [:show, :edit, :update, :destroy]
   respond_to :html, :json
 
   def index
@@ -27,6 +27,12 @@ class MembersController < ApplicationController
     if @member.update(member_params)
       flash[:notice] = "Successfully updated."
     end
+    respond_with(@member, location: members_url)
+  end
+
+  def destroy
+    @member.destroy
+    flash[:notice] = "Deleted."
     respond_with(@member, location: members_url)
   end
 

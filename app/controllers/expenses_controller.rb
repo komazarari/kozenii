@@ -1,5 +1,5 @@
 class ExpensesController < ApplicationController
-  before_action :set_expense, only: [:show]
+  before_action :set_expense, only: [:show, :edit, :update, :destroy]
   respond_to :html, :json
 
   def index
@@ -22,6 +22,19 @@ class ExpensesController < ApplicationController
     if @expense.save
       flash[:notice] = "Successfully created."
     end
+    respond_with(@expense, location: expenses_url)
+  end
+
+ def update
+    if @expense.update(expense_params)
+      flash[:notice] = "Successfully updated."
+    end
+    respond_with(@expense, location: expenses_url)
+  end
+
+  def destroy
+    @expense.destroy
+    flash[:notice] = "Deleted."
     respond_with(@expense, location: expenses_url)
   end
 
