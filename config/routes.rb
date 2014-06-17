@@ -4,13 +4,14 @@ Kozenii::Application.routes.draw do
 
   resources :users
 
-  resources :expenses, only: [:index, :show, :new, :create, :edit]
-  resources :incomes, only: [:index, :show, :new, :create, :edit]
+  resources :expenses
+  resources :incomes
   resources :members
   resources :categories
 
   namespace :admin do
     resources :groups
+    resources :budgets
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
