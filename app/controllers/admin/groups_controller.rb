@@ -18,6 +18,7 @@ class Admin::GroupsController < Admin::BaseController
   end
 
   def create
+    @group = Group.new(group_params)
     if @group.save
       flash[:notice] = "Successfully created."
     end

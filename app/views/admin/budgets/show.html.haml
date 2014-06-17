@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Title:
+  = @budget.title
+%p
+  %b Amount:
+  = @budget.amount
+%p
+  %b Group:
+  = @budget.group_id
+
+= link_to 'Edit', edit_admin_budget_path(@budget)
+\|
+= link_to 'Back', admin_budgets_path

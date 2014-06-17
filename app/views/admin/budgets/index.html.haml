@@ -1,0 +1,30 @@
+.row
+  .span10.page-header
+    = link_to admin_budgets_path do
+      %h2.span2.inline Budgets
+    - if current_user.admin?
+      = link_to t(:new), new_admin_budget_path, { class: "span2 offset4 inline btn btn-primary", id: "new_budget" }
+
+%table.table.table-condensed.table-striped#budgets
+  %thead
+    %tr
+      %th ID
+      %th Group
+      %th= t(:title) 
+      %th= t(:amount)
+      %th= t(:edit)
+      %th= t(:delete)
+
+  %tbody
+    - @budgets.includes(:group).order("groups.show_order").each do |budget|
+      %tr
+        %td= budget.id
+        %td= budget.group.try(:name)
+        %td= budget.title
+        %td.num= number_to_currency budget.amount
+        %td
+          = link_to edit_admin_budget_path(budget) do
+            %i.icon-edit
+        %td
+          = link_to admin_budget_path(budget), method: :delete, data: { confirm: 'Are you sure?' } do
+            %i.icon-edit
