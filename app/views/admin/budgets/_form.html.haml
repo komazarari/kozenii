@@ -1,19 +1,21 @@
-= form_for [:admin, @budget] do |f|
-  - if @budget.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@budget.errors.count, "error")} prohibited this budget from being saved:"
-      %ul
-        - @budget.errors.full_messages.each do |msg|
-          %li= msg
-
-  .field
-    = f.label :title
-    = f.text_field :title
-  .field
-    = f.label :amount
-    = f.number_field :amount
-  .field
-    = f.label :group_id
-    = f.number_field :group_id
-  .actions
-    = f.submit 'Save'
+- if @budget.errors.any?
+  #error_explanation
+    %ul
+      - @budget.errors.full_messages.each do |msg|
+        %li= msg
+= form_for([:admin, @budget], html: {class: "form-horizontal"}) do |f|
+  %fieldset
+    .control-group
+      = f.label :title, t(:title), class: "control-label"
+      .controls
+        = f.text_field :title
+    .control-group
+      = f.label :amount, t(:amount), class: "control-label"
+      .controls
+        = f.number_field :amount
+    .control-group
+      = f.label :group_id, t(:group), class: "control-label"
+      .controls
+        = f.select :group_id, options_from_collection_for_select(Group.order(:show_order), :id, :name, selected: @budget.group_id), {include_blank: '-'}
+    .form-actions
+      = f.submit t(:submit, default: "Save"), class: "btn btn-primary"

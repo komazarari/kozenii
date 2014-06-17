@@ -35,7 +35,7 @@ class Admin::BudgetsController < Admin::BaseController
   def destroy
     @budget.destroy
     flash[:notice] = "Deleted."
-    respond_with(@budget, location: budgets_url)
+    respond_with(@budget, location: admin_budgets_url)
   end
 
   private

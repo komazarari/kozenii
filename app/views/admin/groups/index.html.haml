@@ -22,5 +22,5 @@
           = link_to edit_admin_group_path(group) do
             %i.icon-edit
         %td
-          = link_to group, method: :delete, data: { confirm: 'Are you sure?' } do
+          = link_to admin_group_path(group), method: :delete, data: { confirm: 'Are you sure?' } do
             %i.icon-edit
