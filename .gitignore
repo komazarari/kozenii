@@ -19,3 +19,6 @@
 /config/application.yml
 /config/locales/ja.yml
 db/production-seeds.rb
+
+#
+*sample*
