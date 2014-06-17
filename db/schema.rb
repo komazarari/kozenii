@@ -77,13 +77,6 @@ ActiveRecord::Schema.define(version: 20140617092046) do
     t.datetime "updated_at"
   end
 
-  create_table "samples", force: true do |t|
-    t.string   "name"
-    t.boolean  "myflag"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "users", force: true do |t|
     t.string   "username",               default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
