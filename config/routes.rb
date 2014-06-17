@@ -8,6 +8,7 @@ Kozenii::Application.routes.draw do
   resources :incomes
   resources :members
   resources :categories
+  resource :summary, only: [:show], controller: :summary
 
   namespace :admin do
     resources :groups
