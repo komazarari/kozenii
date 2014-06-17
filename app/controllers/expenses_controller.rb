@@ -9,6 +9,9 @@ class ExpensesController < ApplicationController
   def show
   end
 
+  def edit
+  end
+
   def new
     @expense = if params[:expense]
                  Expense.new(expense_params)
