@@ -4,6 +4,8 @@ class Member < ActiveRecord::Base
   has_many :incomes
   has_many :expenses
 
+  validates :fullname, presence: true
+
   scope :part_order, -> { Member.includes(:part).order("parts.show_order") }
 
   def paid

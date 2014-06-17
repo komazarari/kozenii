@@ -9,6 +9,7 @@ describe MembersController do
   before  do
     sign_in FactoryGirl.create(:user)
   end
+  let(:valid_session) { {} }
 
   describe "GET 'index'" do
     it "returns http success" do
@@ -54,7 +55,22 @@ describe MembersController do
     end
 
     describe "with invalid params" do
-      skip
+      before do
+        Member.any_instance.stub(:save).and_return(false)
+        Member.any_instance.stub(:errors).and_return({ fullname: "invalid" })
+      end
+
+      it "assigns a newly created but unsaved member as @member" do
+        # Trigger the behavior that occurs when invalid params are submitted
+        post :create, {:member => { "fullname" => "" }}, valid_session
+        assigns(:member).should be_a_new(Member)
+      end
+
+      it "re-renders the 'new' template" do
+        # Trigger the behavior that occurs when invalid params are submitted
+        post :create, {:member => { "fullname" => "" }}, valid_session
+        response.should render_template("new")
+      end
     end
   end
 end
