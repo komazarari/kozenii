@@ -1,0 +1,26 @@
+.row
+  .span10.page-header
+    = link_to admin_groups_path do
+      %h2.span2.inline Groups
+    - if current_user.admin?
+      = link_to t(:new), new_admin_group_path, { class: "span2 offset4 inline btn btn-primary", id: "new_group" }
+
+%table.table.table-condensed.table-striped#groups
+  %thead
+    %tr
+      %th ID
+      %th Name
+      %th= t(:edit)
+      %th= t(:delete)
+
+  %tbody
+    - @groups.each do |group|
+      %tr
+        %td= group.id
+        %td= group.name
+        %td
+          = link_to edit_admin_group_path(group) do
+            %i.icon-edit
+        %td
+          = link_to group, method: :delete, data: { confirm: 'Are you sure?' } do
+            %i.icon-edit
