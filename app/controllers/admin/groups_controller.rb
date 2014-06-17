@@ -1,4 +1,5 @@
-class Admin::GroupsController < ApplicationController
+class Admin::GroupsController < Admin::BaseController
+  before_action :admin_required
   before_action :set_group, only: [:show, :edit, :update, :destroy]
   respond_to :html, :json
 
