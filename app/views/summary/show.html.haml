@@ -5,7 +5,7 @@
     %li= link_to t(:expenses), "#expenses_tab", "data-toggle" => "tab"
     %li= link_to t(:incomes), "#incomes_tab", "data-toggle" => "tab"
   .tab-content
-    #base_info_tab.tab-pane.active
+    #total_balance_tab.tab-pane.active
       = render "total_balance"
     #expenses_tab.tab-pane
       /= render "expenses"
