@@ -2,12 +2,12 @@
 .tabbable
   %ul.nav.nav-tabs
     %li.active= link_to t(:total_balance), "#total_balance_tab", "data-toggle" => "tab"
-    %li= link_to t(:expenses), "#expenses_tab", "data-toggle" => "tab"
+    %li= link_to t(:outgoings), "#outgoings_tab", "data-toggle" => "tab"
     %li= link_to t(:incomes), "#incomes_tab", "data-toggle" => "tab"
   .tab-content
     #total_balance_tab.tab-pane.active
       = render "total_balance"
-    #expenses_tab.tab-pane
-      /= render "expenses"
+    #outgoings_tab.tab-pane
+      = render "expenses"
     #incomes_tab.tab-pane
       /= render "incomes"

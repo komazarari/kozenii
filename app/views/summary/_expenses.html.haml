@@ -1,0 +1,15 @@
+%table.table.table-striped.table-condensed
+  %caption= t(:outgoings)
+  %thead
+    %tr
+      %th= link_to_if current_user.admin?, t(:group), admin_groups_path
+      %th= link_to_if current_user.admin?, t(:title), admin_budgets_path
+      %th.num= t(:budget)
+      %th.num= t(:actual)
+  %tbody
+    - @budgets.each do |budget|
+      %tr
+        %td= budget.group.try(:name)
+        %td= link_to_if current_user.admin?, budget.title, admin_budget_path(budget)
+        %td.num= number_to_currency budget.amount
+        %td.num= number_to_currency budget.expenses.sum(:amount)
