@@ -30,6 +30,8 @@ puts '### Setting up Groups ###'
  { name: 'イベント', show_order: 20 },
  { name: '会計', show_order: 30 },
  { name: '外務', show_order: 40 },
+ { name: '定期収入', show_order: 1010 },
+ { name: '臨時収入', show_order: 1020 },
 ].each do |g|
   group = Group.find_or_create_by(name: g[:name])
   group.update(show_order: g[:show_order])
@@ -45,10 +47,12 @@ puts '### Setting up Budgets ###'
  { title: 'コピー', amount: 1000, group: 'イベント' },
  { title: 'ガソリン', amount: 1000, group: '運搬' },
  { title: '印刷', amount: 1000, group: '外務' },
+ { title: '年会費', amount: 1000, group: '定期収入', section: 'in' },
+ { title: '寄付', amount: 1000, group: '臨時収入', section: 'in' },
 ].each do |b|
   budget = Budget.find_or_create_by(title: b[:title])
   group = Group.find_by(name: b[:group])
-  budget.update(amount: b[:amount], group: group)
+  budget.update(amount: b[:amount], group: group, section: b[:section] || 'out')
   puts 'Updated budget: ' << budget.title
 end
 

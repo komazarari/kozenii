@@ -7,4 +7,6 @@ class Budget < ActiveRecord::Base
   has_many :incomes
 
   scope :group_order, -> { includes(:group).order("groups.show_order") }
+  scope :incomes, -> { where(section: 'in') }
+  scope :outgoings, -> { where(section: 'out') }
 end

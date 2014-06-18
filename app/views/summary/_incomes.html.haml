@@ -7,9 +7,9 @@
       %th.num= t(:budget)
       %th.num= t(:actual)
   %tbody
-    - @budgets.each do |budget|
+    - @incomes.each do |income|
       %tr
-        %td= budget.group.try(:name)
-        %td= link_to_if current_user.admin?, budget.title, admin_budget_path(budget)
-        %td.num= number_to_currency budget.amount
-        %td.num= number_to_currency budget.expenses.sum(:amount)
+        %td= income.group.try(:name)
+        %td= link_to_if current_user.admin?, income.title, admin_budget_path(income)
+        %td.num= number_to_currency income.amount
+        %td.num= number_to_currency income.incomes.sum(:amount)

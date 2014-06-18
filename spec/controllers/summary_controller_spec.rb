@@ -8,10 +8,16 @@ describe SummaryController do
   let(:valid_session) { {} }
 
   describe "GET 'show'" do
-    it "assigns all budgets as @budgets" do
-      budget = Budget.create! valid_attributes_for_budget
+    it "assigns all outgoings as @outgoings" do
+      out = Budget.create! valid_attributes_for_budget
       get :show, {}, valid_session
-      expect(assigns(:budgets)).to eq([budget])
+      expect(assigns(:outgoings)).to eq([out])
+    end
+
+    it "assigns all incomes as @incomes" do
+      inc = Budget.create! { title: 'MyTitle', amout: '12345', section: 'in'}
+      get :show, {}, valid_session
+      expect(assigns(:incomes)).to eq([inc])
     end
 
     it "returns http success" do

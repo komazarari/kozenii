@@ -7,9 +7,14 @@
       %th.num= t(:budget)
       %th.num= t(:actual)
   %tbody
-    - @budgets.each do |budget|
+    - @outgoings.each do |out|
       %tr
-        %td= budget.group.try(:name)
-        %td= link_to_if current_user.admin?, budget.title, admin_budget_path(budget)
-        %td.num= number_to_currency budget.amount
-        %td.num= number_to_currency budget.expenses.sum(:amount)
+        %td= out.group.try(:name)
+        %td= link_to_if current_user.admin?, out.title, admin_budget_path(out)
+        %td.num= number_to_currency out.amount
+        %td.num= number_to_currency out.expenses.sum(:amount)
+    %tr
+      %th NOT charged yet
+      %td
+      %td
+      %td.num.caution= number_to_currency Expense.not_associated.sum(:amount)
