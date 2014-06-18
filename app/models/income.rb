@@ -4,4 +4,5 @@ class Income < ActiveRecord::Base
   validates :description, presence: true
 
   belongs_to :member
+  belongs_to :budget
 end

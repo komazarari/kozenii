@@ -4,6 +4,7 @@ class Expense < ActiveRecord::Base
   validates :description, presence: true
 
   belongs_to :member
+  belongs_to :budget
 
   scope :not_closed, -> { where.not(status: ['closed']) }
 end
