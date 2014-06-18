@@ -47,6 +47,7 @@
                 %li= link_to t(:categories), categories_path
                 %li= link_to t(:budgets), admin_budgets_path
                 %li= link_to t(:groups), admin_groups_path
+                %li= link_to t(:topics), admin_topics_path
                 %li= link_to t(:links), admin_link_menus_path
     .container
 
@@ -64,6 +65,7 @@
                 %li= link_to t(:categories), categories_path
                 %li= link_to t(:budgets), admin_budgets_path
                 %li= link_to t(:groups), admin_groups_path
+                %li= link_to t(:topics), admin_topics_path
               %li.nav-header Links
               - LinkMenu.enabled.each do |link|
                 %li= link_to link.viewtext, link.url
