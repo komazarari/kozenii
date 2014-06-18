@@ -1,0 +1,21 @@
+- if @link_menu.errors.any?
+  #error_explanation
+    %ul
+      - @link_menu.errors.full_messages.each do |msg|
+        %li= msg
+= form_for([:admin, @link_menu], html: {class: "form-horizontal"}) do |f|
+  %fieldset
+    .control-group
+      = f.label :viewtext, t(:viewtext), class: "control-label"
+      .controls
+        = f.text_field :viewtext
+    .control-group
+      = f.label :url, t(:url), class: "control-label"
+      .controls
+        = f.text_area :url
+    .control-group
+      = f.label :enabled, t(:enabled), class: "control-label"
+      .controls
+        = f.check_box :enabled, {}
+    .form-actions
+      = f.submit t(:submit, default: "Save"), class: "btn btn-primary"

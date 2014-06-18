@@ -1,0 +1,30 @@
+.row
+  .span10.page-header
+    = link_to admin_link_menus_path do
+      %h2.span2.inline LinkMenus
+    - if current_user.admin?
+      = link_to t(:new), new_admin_link_menu_path, { class: "span2 offset4 inline btn btn-primary", id: "new_link_menu" }
+
+%table.table.table-condensed.table-striped#link_menus
+  %thead
+    %tr
+      %th ID
+      %th Text
+      %th URL
+      %th Enabled
+      %th= t(:edit)
+      %th= t(:delete)
+
+  %tbody
+    - @link_menus.each do |link_menu|
+      %tr
+        %td= link_menu.id
+        %td= link_menu.viewtext
+        %td= link_menu.url
+        %td= link_menu.enabled
+        %td
+          = link_to edit_admin_link_menu_path(link_menu) do
+            %i.icon-edit
+        %td
+          = link_to admin_link_menu_path(link_menu), method: :delete, data: { confirm: 'Are you sure?' } do
+            %i.icon-trash

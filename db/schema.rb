@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140618060622) do
+ActiveRecord::Schema.define(version: 20140618075151) do
 
   create_table "budgets", force: true do |t|
     t.string   "title"
@@ -62,6 +62,14 @@ ActiveRecord::Schema.define(version: 20140618060622) do
     t.datetime "updated_at"
     t.integer  "member_id"
     t.integer  "budget_id"
+  end
+
+  create_table "link_menus", force: true do |t|
+    t.string   "viewtext",                  null: false
+    t.text     "url",                       null: false
+    t.boolean  "enabled",    default: true
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "members", force: true do |t|

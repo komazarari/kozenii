@@ -1,13 +1,10 @@
 class Admin::GroupsController < Admin::BaseController
   before_action :admin_required
-  before_action :set_group, only: [:show, :edit, :update, :destroy]
+  before_action :set_group, only: [:edit, :update, :destroy]
   respond_to :html, :json
 
   def index
     @groups = Group.all
-  end
-
-  def show
   end
 
   def new

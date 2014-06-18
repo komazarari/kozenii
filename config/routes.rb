@@ -12,6 +12,7 @@ Kozenii::Application.routes.draw do
 
   namespace :admin do
     resources :groups, except: [:show]
+    resources :link_menus, except: [:show]
     resources :budgets
   end
 
