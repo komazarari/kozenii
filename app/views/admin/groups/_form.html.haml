@@ -9,5 +9,9 @@
       = f.label :name, t(:name), class: "control-label"
       .controls
         = f.text_field :name
+    .control-group
+      = f.label :show_order, t(:show_order), class: "control-label"
+      .controls
+        = f.number_field :show_order
     .form-actions
       = f.submit t(:submit, default: "Submit"), class: "btn btn-primary"
