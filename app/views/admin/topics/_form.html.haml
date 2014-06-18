@@ -1,0 +1,21 @@
+- if @topic.errors.any?
+  #error_explanation
+    %ul
+      - @topic.errors.full_messages.each do |msg|
+        %li= msg
+= form_for([:admin, @topic], html: {class: "form-horizontal"}) do |f|
+  %fieldset
+    .control-group
+      = f.label :title, t(:title), class: "control-label"
+      .controls
+        = f.text_field :title
+    .control-group
+      = f.label :body, t(:body), class: "control-label"
+      .controls
+        = f.text_area :body
+    .control-group
+      = f.label :enabled, t(:enabled), class: "control-label"
+      .controls
+        = f.check_box :enabled, {}
+    .form-actions
+      = f.submit t(:submit, default: "Save"), class: "btn btn-primary"

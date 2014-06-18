@@ -1,0 +1,30 @@
+.row
+  .span10.page-header
+    = link_to admin_topics_path do
+      %h2.span2.inline Topics
+    - if current_user.admin?
+      = link_to t(:new), new_admin_topic_path, { class: "span2 offset4 inline btn btn-primary", id: "new_topic" }
+
+%table.table.table-condensed.table-striped#topics
+  %thead
+    %tr
+      %th ID
+      %th Title
+      %th Body
+      %th Enabled
+      %th= t(:edit)
+      %th= t(:delete)
+
+  %tbody
+    - @topics.each do |topic|
+      %tr
+        %td= topic.id
+        %td= topic.title
+        %td= topic.body
+        %td= topic.enabled
+        %td
+          = link_to edit_admin_topic_path(topic) do
+            %i.icon-edit
+        %td
+          = link_to admin_topic_path(topic), method: :delete, data: { confirm: 'Are you sure?' } do
+            %i.icon-trash
