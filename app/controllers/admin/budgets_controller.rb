@@ -44,6 +44,6 @@ class Admin::BudgetsController < Admin::BaseController
     end
 
     def budget_params
-      params.require(:budget).permit(:title, :amount, :group_id)
+      params.require(:budget).permit(:title, :amount, :group_id, :default_income, :default_outgoing)
     end
 end

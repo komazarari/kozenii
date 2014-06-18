@@ -6,7 +6,7 @@ describe IncomesController do
   end
 
   before  do
-    sign_in FactoryGirl.create(:user)
+    sign_in FactoryGirl.create(:user, { role: "admin" })
   end
 
   describe "GET 'index'" do

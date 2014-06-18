@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140618021634) do
+ActiveRecord::Schema.define(version: 20140618060622) do
 
   create_table "budgets", force: true do |t|
     t.string   "title"
@@ -19,6 +19,9 @@ ActiveRecord::Schema.define(version: 20140618021634) do
     t.integer  "group_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "section",          default: "out", null: false
+    t.boolean  "default_income"
+    t.boolean  "default_outgoing"
   end
 
   create_table "categories", force: true do |t|

@@ -1,4 +1,5 @@
 class IncomesController < ApplicationController
+  before_action :admin_required, except: [:index, :show]
   before_action :set_income, only: [:show, :edit, :update, :destroy]
   respond_to :html, :json
 
@@ -51,6 +52,7 @@ class IncomesController < ApplicationController
                                    :amount,
                                    :description,
                                    :member_id,
+                                   :budget_id,
                                    :comment)
   end
 end

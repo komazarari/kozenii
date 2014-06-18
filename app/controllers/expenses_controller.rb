@@ -51,6 +51,8 @@ class ExpensesController < ApplicationController
                                     :amount,
                                     :description,
                                     :member_id,
+                                    :budget_id,
+                                    :status,
                                     :comment,
                                     :status)
   end

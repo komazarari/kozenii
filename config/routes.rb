@@ -11,7 +11,7 @@ Kozenii::Application.routes.draw do
   resource :summary, only: [:show], controller: :summary
 
   namespace :admin do
-    resources :groups
+    resources :groups, except: [:show]
     resources :budgets
   end
 
