@@ -1,9 +1,9 @@
 .row
   .span10
     %h1
-      = t(:maintitle)
+      = ENV['MAIN_TITLE'] || "Kozenii"
       %small
-        = t(:subtitle)
+        = ENV['SUB_TITLE'] || "simple account management"
 .row
   %h2
     = link_to new_expense_path, { class: "span2 btn btn-primary btn-large", id: "new_expense", title: "Apply New" } do
