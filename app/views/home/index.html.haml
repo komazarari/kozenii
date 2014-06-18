@@ -1,9 +1,37 @@
 .row
-  .span10.page-header
-    %h2.span2.inline= t(:home)
-    = link_to new_expense_path, { class: "span1 offset5 inline btn btn-primary", id: "new_expense", title: "Apply New)}" } do
+  .span10
+    %h1
+      = t(:maintitle)
+      %small
+        = t(:subtitle)
+.row
+  %h2
+    = link_to new_expense_path, { class: "span2 btn btn-primary btn-large", id: "new_expense", title: "Apply New" } do
       %i.icon-pencil.icon-white
+      = t(:report_expense)
+    - if current_user.admin?
+      = link_to new_expense_path, { class: "span2 btn btn-warning btn-large", id: "new_income" } do
+        %i.icon-plus.icon-white
+        = t(:register_income)
+    - else
+      .span2.btn.btn-warning.btn-large.disabled
+        %i.icon-plus.icon-white
+        = t(:register_income)
+    - if current_user.admin?
+      = link_to expenses_path, { class: "span2 btn btn-success btn-large", id: "adjust_expense" } do
+        %i.icon-file.icon-white
+        = t(:adjust_expense)
+    - else
+      .span2.btn.btn-success.btn-large.disabled
+        %i.icon-plus.icon-white
+        = t(:adjust_expense)
+    .span12
 
-%h3= link_to t(:members), members_path, { title: 'members' }
-%h3= link_to t(:expenses), expenses_path, { title: 'expenses' }
-%h3= link_to t(:incomes), incomes_path, { title: 'incomes' }
+.row
+  .span10.page-header
+
+%h2 Topics
+- Topic.enabled.each do |topic|
+  %dl
+    %dt= topic.title
+    %dd= topic.body
