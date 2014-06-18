@@ -22,20 +22,20 @@ class Admin::GroupsController < Admin::BaseController
     if @group.save
       flash[:notice] = "Successfully created."
     end
-    respond_with(@group, location: groups_url)
+    respond_with(@group, location: admin_groups_url)
   end
 
   def update
     if @group.update(group_params)
       flash[:notice] = "Successfully updated."
     end
-    respond_with(@group, location: groups_url)
+    respond_with(@group, location: admin_groups_url)
   end
 
   def destroy
     @group.destroy
     flash[:notice] = "Deleted."
-    respond_with(@group, location: groups_url)
+    respond_with(@group, location: admin_groups_url)
   end
 
   private

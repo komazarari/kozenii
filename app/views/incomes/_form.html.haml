@@ -25,6 +25,10 @@
       .controls
         = f.select :member_id, options_from_collection_for_select(Member.part_order, :id, :nick, selected: @income.member_id), {include_blank: t(:other_member)}
     .control-group
+      = f.label :budget_id, t(:budget), class: "control-label"
+      .controls
+        = f.select :budget_id, options_from_collection_for_select(Budget.incomes, :id, :title, selected: @income.budget_id || Budget.find_by(default_income: true)), {include_blank: false}
+    .control-group
       = f.label :comment, t(:comment), class: "control-label"
       .controls
         = f.text_field :comment
