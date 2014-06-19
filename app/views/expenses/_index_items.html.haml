@@ -5,6 +5,9 @@
       %th= t(:_date)
       %th= t(:description)
       %th= t(:amount)
+      %th= t(:member)
+      %th= t(:charged)
+      %th= t(:status)
       %th= t(:edit)
       %th= t(:delete)
   %tbody
@@ -14,6 +17,15 @@
         %td= e.used_date
         %td= e.description[0,20]
         %td.num= number_to_currency e.amount
+        %td= e.member.try(:nick)
+        %td.text-center
+          - if e.budget_id
+            %i.icon-ok
+        %td
+          - if e.closed?
+            .badge.badge-success= t(:closed)
+          - else
+            .badge.badge-warning= t(:open)
         %td
           = link_to_if_with_block current_user.admin?, edit_expense_path(e) do
             %i.icon-edit

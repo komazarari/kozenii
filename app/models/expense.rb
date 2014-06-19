@@ -8,4 +8,12 @@ class Expense < ActiveRecord::Base
 
   scope :not_closed, -> { where.not(status: ['closed']) }
   scope :not_associated, -> { where(budget_id: nil) }
+
+  def open?
+    status == 'open'
+  end
+
+  def closed?
+    status == 'closed'
+  end
 end

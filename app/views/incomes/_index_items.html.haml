@@ -5,6 +5,7 @@
       %th= t(:_date)
       %th= t(:obtained_date)
       %th= t(:amount)
+      %th= t(:member)
       %th= t(:edit)
       %th= t(:delete)
   %tbody
@@ -14,6 +15,7 @@
         %td= i.obtained_date
         %td= i.description[0,20]
         %td.num= number_to_currency i.amount
+        %td= i.member.try(:nick)
         %td
           = link_to_if_with_block current_user.admin?, edit_income_path(i) do
             %i.icon-edit
