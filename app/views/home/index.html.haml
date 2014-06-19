@@ -30,6 +30,8 @@
 .row
   .span10.page-header
 
+= render template: "summary/_total_balance"
+
 %h2 Topics
 = link_to t(:edit), admin_topics_path
 - Topic.enabled.each do |topic|

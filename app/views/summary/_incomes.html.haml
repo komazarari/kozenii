@@ -13,3 +13,8 @@
         %td= link_to_if current_user.admin?, income.title, admin_budget_path(income)
         %td.num= number_to_currency income.amount
         %td.num= number_to_currency income.incomes.sum(:amount)
+    %tr.summary
+      %th
+      %td
+      %td.num= number_to_currency Budget.incomes.sum(:amount)
+      %th.num= number_to_currency Income.sum(:amount)

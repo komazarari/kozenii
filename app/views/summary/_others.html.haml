@@ -1,0 +1,8 @@
+%table.table.table-striped
+  %caption= t(:others)
+  %thead
+  %tbody
+    %tr
+      %th= t(:remaining)
+      %td
+      %td.num= number_to_currency (Income.sum(:amount) - Expense.sum(:amount))

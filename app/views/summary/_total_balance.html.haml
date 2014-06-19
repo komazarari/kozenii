@@ -1,24 +1,26 @@
 %table.table.table-striped
   %caption= t(:total)
   %thead
+    %tr
+      %th
+      %th.num= t(:budget)
+      %th.num= t(:actual)
   %tbody
     %tr
       %th= t(:income)
-      %td.num= number_to_currency Income.sum(:amount)
+      %td.num= number_to_currency Budget.incomes.sum(:amount)
+      %th.num= number_to_currency Income.sum(:amount)
     %tr
       %th= t(:outgoing)
-      %td.num= number_to_currency Expense.sum(:amount)
+      %td.num= number_to_currency Budget.outgoings.sum(:amount)
+      %th.num= number_to_currency Expense.sum(:amount)
     %tr
-      %td -- NOT closed
-      %td.num.small= "(#{number_to_currency Expense.not_closed.sum(:amount)})"
-    %tr
+      %td.text-warning
+        \:
+        = t(:not_closed)
+      %td -
+      %td.text-warning.num.small= "(#{number_to_currency Expense.not_closed.sum(:amount)})"
+    %tr.summary
       %th
-      %td.num= number_to_currency (Income.sum(:amount) - Expense.sum(:amount))
-
-%table.table.table-striped
-  %caption= t(:others)
-  %thead
-  %tbody
-    %tr
-      %th= t(:remaining)
-      %td.num= number_to_currency (Income.sum(:amount) - Expense.sum(:amount))
+      %td.num= number_to_currency (Budget.incomes.sum(:amount) - Budget.outgoings.sum(:amount))
+      %th.num= number_to_currency (Income.sum(:amount) - Expense.sum(:amount))
