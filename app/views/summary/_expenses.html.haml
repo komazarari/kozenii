@@ -14,7 +14,12 @@
         %td.num= number_to_currency out.amount
         %td.num= number_to_currency out.expenses.sum(:amount)
     %tr
-      %th NOT charged yet
-      %td
-      %td
+      %th.text-warning= t(:not_charged_yet)
+      %td -
+      %td -
       %td.num.text-warning= number_to_currency Expense.not_associated.sum(:amount)
+    %tr.summary
+      %th
+      %td
+      %td.num= number_to_currency Budget.outgoings.sum(:amount)
+      %th.num= number_to_currency Expense.sum(:amount)
