@@ -4,7 +4,12 @@ Kozenii::Application.routes.draw do
 
   resources :users
 
-  resources :expenses
+  resources :expenses do
+    post 'update_comments'
+    member do
+      get 'comments'
+    end
+  end
   resources :incomes
   resources :members
   resources :categories

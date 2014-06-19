@@ -1,7 +1,7 @@
 Then(/^I should be on the new expense page$/) do
   page.should have_field("expense_description")
   page.should have_field("expense_amount")
-  page.should have_field("expense_comment")
+  page.should have_field("expense_user_note")
 end
 
 Then(/^I should see detail of an expense item$/) do

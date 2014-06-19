@@ -39,8 +39,8 @@
             = f.radio_button :status, 'closed'
             Closed
     .control-group
-      = f.label :comment, t(:comment), class: "control-label"
+      = f.label :user_note, t(:user_note), class: "control-label"
       .controls
-        = f.text_field :comment
+        = f.text_field :user_note
     .form-actions
       = f.submit t(:submit, default: "Submit"), class: "btn btn-primary"

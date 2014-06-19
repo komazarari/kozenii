@@ -1,0 +1,4 @@
+- @expense.comments.each do |comment|
+  %dl
+    %dt= comment.created_at.getlocal
+    %dd= comment.body

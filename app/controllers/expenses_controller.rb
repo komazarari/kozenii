@@ -1,5 +1,5 @@
 class ExpensesController < ApplicationController
-  before_action :set_expense, only: [:show, :edit, :update, :destroy]
+  before_action :set_expense, only: [:show, :edit, :update, :destroy, :comments]
   respond_to :html, :json
 
   def index
@@ -41,6 +41,16 @@ class ExpensesController < ApplicationController
     respond_with(@expense, location: expenses_url)
   end
 
+  def update_comments
+    @expense = Expense.find(params[:expense_id])
+    @expense.comments.build(comment_params)
+    @expense.save
+  end
+
+  def comments
+    render template: 'expenses/_comments', layout: false
+  end
+
   private
   def set_expense
     @expense = Expense.find(params[:id])
@@ -53,7 +63,11 @@ class ExpensesController < ApplicationController
                                     :member_id,
                                     :budget_id,
                                     :status,
-                                    :comment,
+                                    :user_note,
                                     :status)
+  end
+
+  def comment_params
+    params.require(:comment).permit(:body)
   end
 end

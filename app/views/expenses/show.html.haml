@@ -10,11 +10,31 @@
     %dd= number_to_currency(@expense.amount)
     %dt= t(:status)
     %dd= @expense.status
-    %dt= t(:comment)
-    %dd= @expense.comment
+    %dt= t(:member)
+    %dd= @expense.member.try(:fullname)
+    %dt= t(:charge)
+    %dd
+      = @expense.budget.try(:group).try(:name)
+      = @expense.budget.try(:fullname)
+    %dt= t(:user_note)
+    %dd= @expense.user_note
 - else
   %h4 Invalid entry
 
+%h5  comments
+#comments
+  = render 'comments'
+
+= form_for @expense.comments.build, url: expense_update_comments_path(@expense), data: { remote: true } do |f|
+  .control-group
+    = f.label :body, t(:body), class: "control-label"
+    .controls
+      = f.text_field :body
+  .form-actions
+    = f.submit t(:submit, default: "Save"), class: "btn btn-primary"
+
+
+<hr>
 %dl.dl-horizontal
   %dt Created at
   %dd= @expense.created_at.getlocal

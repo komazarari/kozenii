@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140618161539) do
+ActiveRecord::Schema.define(version: 20140619085914) do
 
   create_table "budgets", force: true do |t|
     t.string   "title"
@@ -32,11 +32,18 @@ ActiveRecord::Schema.define(version: 20140618161539) do
     t.datetime "updated_at"
   end
 
+  create_table "comments", force: true do |t|
+    t.text     "body"
+    t.integer  "expense_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "expenses", force: true do |t|
     t.date     "used_date"
     t.integer  "amount"
     t.text     "description"
-    t.text     "comment"
+    t.text     "user_note"
     t.boolean  "valid_req",   default: true
     t.datetime "created_at"
     t.datetime "updated_at"

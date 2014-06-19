@@ -1,7 +1,7 @@
 Then(/^I should be on the new income page$/) do
   page.should have_field("income_description")
   page.should have_field("income_amount")
-  page.should have_field("income_comment")
+  page.should have_field("income_user_note")
 end
 
 When(/^I create a new income$/) do
