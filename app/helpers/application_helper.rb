@@ -6,4 +6,12 @@ module ApplicationHelper
       capture &block
     end
   end
+
+  def omit(str, num)
+    if str.length <= num
+      str
+    else
+      str[0..num] + '...'
+    end
+  end
 end

@@ -15,7 +15,7 @@
       %tr
         %td= link_to e.id, e
         %td= e.used_date
-        %td= link_to e.description[0,20], e
+        %td= link_to omit(e.description, 20), e
         %td.num= number_to_currency e.amount
         %td= e.member.try(:nick)
         %td.text-center

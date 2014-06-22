@@ -25,15 +25,6 @@
 #comments
   = render 'comments'
 
-= form_for @expense.comments.build, url: expense_update_comments_path(@expense), data: { remote: true } do |f|
-  .control-group
-    = f.label :body, t(:body), class: "control-label"
-    .controls
-      = f.text_field :body
-  .form-actions
-    = f.submit t(:submit, default: "Save"), class: "btn btn-primary"
-
-
 <hr>
 %dl.dl-horizontal
   %dt Created at

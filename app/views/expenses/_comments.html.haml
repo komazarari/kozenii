@@ -1,4 +1,15 @@
 - @expense.comments.each do |comment|
   %dl
-    %dt= comment.created_at.getlocal
+    %dt
+      .row
+        .span2
+          = comment.created_at.getlocal
+        = link_to_if_with_block current_user.admin?, comment,
+        method: :delete, data: { remote: true, confirm: "Are you sure to delete comment:\"#{omit(comment.body, 10)}\"?" } do
+          %i.icon-trash.span2
+
     %dd= comment.body
+
+= form_for @expense.comments.build, url: expense_update_comments_path(@expense), data: { remote: true } do |f|
+  = f.text_area :body
+  = f.submit t(:submit, default: "Save"), class: "btn btn-primary"
