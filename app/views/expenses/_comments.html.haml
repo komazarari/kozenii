@@ -2,7 +2,7 @@
   %dl
     %dt
       .row
-        .span2
+        .span4
           = comment.created_at.getlocal
         = link_to_if_with_block current_user.admin?, comment,
         method: :delete, data: { remote: true, confirm: "Are you sure to delete comment:\"#{omit(comment.body, 10)}\"?" } do
