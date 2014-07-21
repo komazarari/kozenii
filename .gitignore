@@ -22,3 +22,6 @@ db/production-seeds.rb
 
 #
 *sample*
+
+# Ignore test reports
+/coverage
