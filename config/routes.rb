@@ -4,7 +4,17 @@ Kozenii::Application.routes.draw do
 
   resources :users
 
-  resources :expenses
+  resources :expenses do
+    post 'update_comments'
+    member do
+      get 'comments'
+#      delete 'comments/:comment_id' => 'expenses#delete_comment'
+    end
+  end
+
+  resources :comments, only: [:destroy] do
+#    delete ':id', to: 'expenses#destroy_comment'
+  end
   resources :incomes
   resources :members
   resources :categories
