@@ -1,27 +1,35 @@
+%h4 Datails
 - if @expense.valid_req
-  %dl.dl-horizontal
-    %dt No.
-    %dd= @expense.id
-    %dt= t(:_date)
-    %dd= l @expense.used_date
-    %dt= t(:description)
+  %dl
+    .row
+      %dt.span1 No.
+      %dd.span2= @expense.id
+      %dt.span1= t(:_date)
+      %dd= l @expense.used_date
+      %dt.span1= t(:member)
+      %dd= @expense.member.try(:fullname)
+    .row
+      %dt.span1= t(:charge)
+      %dd.span2= @expense.budget.try(:group).try(:name) || 'None'
+
+      %dt.span1= t(:status)
+      - if @expense.closed?
+        %dd.text-center.span1.badge.badge-success= t(:closed)
+      - else
+        %dd.text-center.span1.badge.badge-warning= t(:open)
+    %h5.row
+      %dt.span1= t(:amount)
+      %dd.span2= number_to_currency(@expense.amount)
+    %dt
+      %h5= t(:description)
     %dd= @expense.description
-    %dt= t(:amount)
-    %dd= number_to_currency(@expense.amount)
-    %dt= t(:status)
-    %dd= @expense.status
-    %dt= t(:member)
-    %dd= @expense.member.try(:fullname)
-    %dt= t(:charge)
-    %dd
-      = @expense.budget.try(:group).try(:name)
-      = @expense.budget.try(:fullname)
-    %dt= t(:user_note)
+    %dt
+      %h5= t(:user_note)
     %dd= @expense.user_note
 - else
   %h4 Invalid entry
-
-%h5  comments
+<hr>
+%h4  comments
 #comments
   = render 'comments'
 
