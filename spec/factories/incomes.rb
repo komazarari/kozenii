@@ -8,6 +8,7 @@ FactoryGirl.define do
     amount
     description
     comment
+    member
     valid_req true
   end
 end
