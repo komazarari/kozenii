@@ -17,6 +17,8 @@
         %dd.text-center.span1.badge.badge-success= t(:closed)
       - else
         %dd.text-center.span1.badge.badge-warning= t(:open)
+        %dd
+          = link_to t(:balance_out), new_balancer_expense_path(@expense), { class: "span1 btn btn-primary" }
     %h5.row
       %dt.span1= t(:amount)
       %dd.span2= number_to_currency(@expense.amount)

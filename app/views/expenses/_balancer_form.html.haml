@@ -1,0 +1,25 @@
+- if @income.valid_req
+  %dl.dl-horizontal
+    %dt= t(:_date)
+    %dd= l @income.obtained_date
+    %dt= t(:amount)
+    %dd= number_to_currency(@income.amount)
+    %dt= t(:member)
+    %dd= @income.member.fullname
+
+= form_tag balanced_out_expense_path, class: "form-horizontal" do
+  %fieldset
+    .control-group
+      = label_tag :balancer_description, t(:description), class: "control-label"
+      .controles
+        = text_field :balancer, :description
+    .control-group
+      = label_tag :balancer_budget_id, t(:budget), class: "control-label"
+      .controles
+        = select :balancer, :budget_id, options_from_collection_for_select(Budget.group_order, :id, :title, selected: @balancer.budget_id)
+    .control-group
+      = label_tag :balancer_comment, t(:comment), class: "control-label"
+      .controles
+        = text_area :balancer, :comment
+    .form-actions
+      = submit_tag t(:submit, default: "Submit"), class: "btn btn-primary"

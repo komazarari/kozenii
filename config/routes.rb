@@ -8,7 +8,8 @@ Kozenii::Application.routes.draw do
     post 'update_comments'
     member do
       get 'comments'
-#      delete 'comments/:comment_id' => 'expenses#delete_comment'
+      get 'new_balancer'
+      post 'balanced_out'
     end
   end
 

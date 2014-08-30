@@ -1,25 +1,36 @@
 class Balancer
+  attr_reader :description, :budget_id, :comment
+
   def initialize(expense)
     @expense = expense
-    @desc = "#{I18n.t(:balance_out)}: expense##{@expense.id} #{@expense.description}"
+    @description = "#{I18n.t(:balance_out)}: expense##{@expense.id} #{@expense.description}"
+    @budget_id = Budget.default_income.try(:id)
+    @comment = ''
   end
 
-  def balance_out(desc: @desc,
-                  budget: Budget.default_income,
-                  comment: '')
-    params = {
+  def income(description: @description,
+                  budget_id: @budget_id,
+                  comment: @comment)
+    income_params = {
       obtained_date: Time.now,
       amount: @expense.amount,
-      description: desc,
-      budget_id: budget,
+      description: description,
+      budget_id: budget_id,
+      member_id: @expense.member_id,
       comment: comment,
     }
-    @income = Income.new(params)
+    Income.new(income_params)
+  end
+
+  def balance_out(description: @description,
+                  budget_id: @budget_id,
+                  comment: @comment)
+    new_income = income(description: description, budget_id: budget_id, comment: comment)
     Expense.transaction do
-      @income.save!
+      new_income.save!
       @expense.update!(status: "closed")
     end
-    @income
+    new_income
   rescue => e
     nil
   end
