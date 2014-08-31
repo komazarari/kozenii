@@ -4,7 +4,7 @@ class IncomesController < ApplicationController
   respond_to :html, :json
 
   def index
-    @incomes = Income.all
+    @incomes = Income.desc.page params[:page]
   end
 
   def show
