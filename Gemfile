@@ -19,7 +19,7 @@ gem 'devise'
 gem 'haml-rails'
 gem 'figaro'
 gem 'kaminari', github: 'amatsuda/kaminari', ref: 'v0.16.1'
-
+gem 'ransack'
 
 # Use CoffeeScript for .js.coffee assets and views
 gem 'coffee-rails'
