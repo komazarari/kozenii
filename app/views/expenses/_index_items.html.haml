@@ -22,10 +22,11 @@
           - if e.budget_id
             %i.icon-ok
         %td
-          - if e.closed?
+          - if e.closed? && e.budget_id
             .badge.badge-success= t(:closed)
           - else
-            .badge.badge-warning= t(:open)
+            = link_to expense_path(e), { class: "badge badge-warning"} do
+              = e.open? ? t(:open) : t(:closed)
         %td
           = link_to_if_with_block(e.open? || current_user.admin?, edit_expense_path(e)) do
             %i.icon-edit

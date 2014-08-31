@@ -1,6 +1,9 @@
 class ExpensesController < ApplicationController
+  before_action :admin_required, only: [:new_balancer, :balanced_out]
   before_action :set_expense, only: [:show, :edit, :update, :destroy, :comments, :new_balancer, :balanced_out]
+  before_action :do_nothing_if_closed, only: [:new_balancer, :balanced_out]
   respond_to :html, :json
+
 
   def index
     @expenses = Expense.all
@@ -58,10 +61,10 @@ class ExpensesController < ApplicationController
 
   def balanced_out
     @balancer = Balancer.new(@expense)
-    balancer_params
     new_income = @balancer.balance_out(description: balancer_params[:description],
                                        budget_id: balancer_params[:budget_id],
-                                       comment: balancer_params[:comment])
+                                       comment: balancer_params[:comment],
+                                       expense_budget_id: balancer_params[:expense_budget_id])
     respond_to do |format|
       if new_income
         format.html { redirect_to(expense_url(@expense), notice: "Expense/Income were successfully updated.\nSee #{view_context.link_to('New Item', income_path(new_income))}".html_safe) }
@@ -89,12 +92,20 @@ class ExpensesController < ApplicationController
   end
 
   def balancer_params
-    params.require(:balancer).permit(:description,
+    params.require(:balancer).permit(:expense_budget_id,
+                                     :description,
                                      :budget_id,
                                      :comment)
   end
 
   def comment_params
     params.require(:comment).permit(:body)
+  end
+
+  def do_nothing_if_closed
+    if Expense.find(params[:id]).closed?
+      flash[:alert] = "The item has already been closed"
+      render action: 'show' and return
+    end
   end
 end

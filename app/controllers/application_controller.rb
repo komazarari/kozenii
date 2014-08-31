@@ -8,6 +8,7 @@ class ApplicationController < ActionController::Base
   def admin_required
     unless current_user.admin?
       render text: "Forbidden", layout: false, status: 403
+      return
     end
   end
 end

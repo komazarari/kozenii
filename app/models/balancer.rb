@@ -1,5 +1,5 @@
 class Balancer
-  attr_reader :description, :budget_id, :comment
+  attr_reader :description, :budget_id, :comment, :expense_budget_id
 
   def initialize(expense)
     @expense = expense
@@ -24,11 +24,12 @@ class Balancer
 
   def balance_out(description: @description,
                   budget_id: @budget_id,
-                  comment: @comment)
+                  comment: @comment,
+                  expense_budget_id: @expense.budget_id)
     new_income = income(description: description, budget_id: budget_id, comment: comment)
     Expense.transaction do
       new_income.save!
-      @expense.update!(status: "closed")
+      @expense.update!(status: "closed", budget_id: expense_budget_id)
     end
     new_income
   rescue => e
