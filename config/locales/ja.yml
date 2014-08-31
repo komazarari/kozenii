@@ -27,6 +27,7 @@ ja:
   description: "詳細"
   basic_due: "団費"
   ext_due: "その他会費"
+  balance_out: "相殺"
 
   report_expense: "経費申請"
   register_income: "収入登録"

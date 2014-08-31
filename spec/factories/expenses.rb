@@ -11,6 +11,7 @@ FactoryGirl.define do
     amount
     description
     user_note
+    member
     status    "open"
     valid_req   true
   end
