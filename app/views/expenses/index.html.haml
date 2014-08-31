@@ -4,4 +4,5 @@
       %h2.span2.inline Expenses
     = link_to t(:new), new_expense_path, { class: "span2 offset4 inline btn btn-primary", id: "new_expense" }
 
+= paginate @expenses
 = render "index_items"

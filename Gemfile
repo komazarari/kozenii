@@ -18,6 +18,8 @@ gem 'twitter-bootstrap-rails', git: 'git://github.com/seyhunak/twitter-bootstrap
 gem 'devise'
 gem 'haml-rails'
 gem 'figaro'
+gem 'kaminari', github: 'amatsuda/kaminari', ref: 'v0.16.1'
+
 
 # Use CoffeeScript for .js.coffee assets and views
 gem 'coffee-rails'

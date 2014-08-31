@@ -6,7 +6,7 @@ class ExpensesController < ApplicationController
 
 
   def index
-    @expenses = Expense.all
+    @expenses = Expense.desc.page params[:page]
   end
 
   def show
