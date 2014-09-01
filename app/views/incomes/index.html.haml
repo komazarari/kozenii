@@ -7,7 +7,14 @@
     - else
       .span2.offset4.inline.btn.btn-primary.disabled= t(:new)
 
-= search_form_for @q, {class: "form-search"} do |f|
+%button.btn.btn-info.btn-link.incomes-toggle-button.pull-right
+  .icon-plus-sign
+  Search
+%button.btn.btn-info.btn-link.incomes-toggle-button.pull-right{style: "display: none"}
+  .icon-minus-sign
+  Search
+
+= search_form_for @q, {class: "form-search", id: "incomes_search_form"} do |f|
   .row.span12
     = f.label :description_cont, t(:description)
     = f.search_field :description_cont, {class: "search-query"}
