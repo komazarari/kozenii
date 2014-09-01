@@ -7,12 +7,15 @@
     - else
       .span2.offset4.inline.btn.btn-primary.disabled= t(:new)
 
-%button.btn.btn-info.btn-link.incomes-toggle-button.pull-right
+%button.btn.btn-info.btn-link.incomes-toggle-button.pull-right{style: "display: none"}
   .icon-plus-sign
   Search
-%button.btn.btn-info.btn-link.incomes-toggle-button.pull-right{style: "display: none"}
+%button.btn.btn-info.btn-link.incomes-toggle-button.pull-right
   .icon-minus-sign
   Search
+
+- if @query_params
+  #incomes_enable_query
 
 = search_form_for @q, {class: "form-search", id: "incomes_search_form"} do |f|
   .row.span12

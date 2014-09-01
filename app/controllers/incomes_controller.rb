@@ -4,6 +4,7 @@ class IncomesController < ApplicationController
   respond_to :html, :json
 
   def index
+    @query_params = params[:q]
     @q = Income.search(params[:q])
     @incomes = @q.result.desc.page params[:page]
   end

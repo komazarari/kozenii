@@ -4,12 +4,15 @@
       %h2.span2.inline Expenses
     = link_to t(:new), new_expense_path, { class: "span2 offset4 inline btn btn-primary", id: "new_expense" }
 
-%button.btn.btn-info.btn-link.expenses-toggle-button.pull-right
+%button.btn.btn-info.btn-link.expenses-toggle-button.pull-right{style: "display: none"}
   .icon-plus-sign
   Search
-%button.btn.btn-info.btn-link.expenses-toggle-button.pull-right{style: "display: none"}
+%button.btn.btn-info.btn-link.expenses-toggle-button.pull-right
   .icon-minus-sign
   Search
+
+- if @query_params
+  #expenses_enable_query
 
 = search_form_for @q, {class: "form-search", id: "expenses_search_form"} do |f|
   .row.span12

@@ -1,6 +1,10 @@
+toggle_incomes_form = () ->
+    $('#incomes_search_form').toggle()
+    $('.incomes-toggle-button').toggle()
+
 $ ->
-    $('#incomes_search_form').hide()
+    if $('#incomes_enable_query').length <= 0
+        toggle_incomes_form()
 
     $('.incomes-toggle-button').click ->
-        $('#incomes_search_form').toggle()
-        $('.incomes-toggle-button').toggle()
+        toggle_incomes_form()
