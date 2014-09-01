@@ -4,4 +4,28 @@
       %h2.span2.inline Expenses
     = link_to t(:new), new_expense_path, { class: "span2 offset4 inline btn btn-primary", id: "new_expense" }
 
+%button.btn.btn-info.btn-link.expenses-toggle-button.pull-right
+  .icon-plus-sign
+  Search
+%button.btn.btn-info.btn-link.expenses-toggle-button.pull-right{style: "display: none"}
+  .icon-minus-sign
+  Search
+
+= search_form_for @q, {class: "form-search", id: "expenses_search_form"} do |f|
+  .row.span12
+    = f.label :description_cont, t(:description)
+    = f.search_field :description_cont, {class: "search-query"}
+    = f.label :member_nick_or_member_yomi_or_member_fullname_cont, t(:member)
+    = f.search_field :member_nick_or_member_yomi_or_member_fullname_cont, {class: "search-query"}
+  .row.span12
+    = f.label :budget_title_or_budget_group_name_cont, t(:budget)
+    = f.search_field :budget_title_or_budget_group_name_cont, {class: "search-query"}
+    = f.label :status_eq, { class: "checkbox" } do
+      = t(:status_closed)
+      = f.check_box :status_eq, {}, 'closed', 'open'
+  .row.span12
+    = f.button type: :submit, class: "btn btn-info span1" do
+      .icon-search.icon-white
+
+= paginate @expenses
 = render "index_items"

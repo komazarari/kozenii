@@ -5,4 +5,6 @@ class Income < ActiveRecord::Base
 
   belongs_to :member
   belongs_to :budget
+
+  scope :desc, -> { all.order("id DESC") }
 end

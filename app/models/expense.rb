@@ -7,6 +7,7 @@ class Expense < ActiveRecord::Base
   belongs_to :budget
   has_many :comments
 
+  scope :desc, -> { all.order("id DESC") }
   scope :not_closed, -> { where.not(status: ['closed']) }
   scope :not_associated, -> { where(budget_id: nil) }
 

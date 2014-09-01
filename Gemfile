@@ -18,6 +18,8 @@ gem 'twitter-bootstrap-rails', git: 'git://github.com/seyhunak/twitter-bootstrap
 gem 'devise'
 gem 'haml-rails'
 gem 'figaro'
+gem 'kaminari', github: 'amatsuda/kaminari', ref: 'v0.16.1'
+gem 'ransack'
 
 # Use CoffeeScript for .js.coffee assets and views
 gem 'coffee-rails'
@@ -31,6 +33,7 @@ gem 'jquery-ui-rails'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
+gem 'jquery-turbolinks'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
