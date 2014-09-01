@@ -22,7 +22,7 @@
     = f.search_field :budget_title_or_budget_group_name_cont, {class: "search-query"}
     = f.label :status_eq, { class: "checkbox" } do
       = t(:status_closed)
-      = f.check_box :status_eq, {}, 'closed', 'open'
+      = f.check_box :status_eq, {}, 'closed', ''
   .row.span12
     = f.button type: :submit, class: "btn btn-info span1" do
       .icon-search.icon-white
