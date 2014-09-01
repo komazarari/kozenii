@@ -6,7 +6,8 @@ class ExpensesController < ApplicationController
 
 
   def index
-    @expenses = Expense.desc.page params[:page]
+    @q = Expense.search(params[:q])
+    @expenses = @q.result.desc.page params[:page]
   end
 
   def show

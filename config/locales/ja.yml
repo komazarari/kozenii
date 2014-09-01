@@ -13,6 +13,8 @@ ja:
   actual: "実績"
   total_balance: "収支合計"
   charged: "チャージ"
+  status_open: "未精算"
+  status_closed: "精算済"
   not_closed: "未精算"
   not_charged_yet: "チャージ先無し"
   open: "未"
