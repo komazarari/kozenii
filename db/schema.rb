@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140619085914) do
+ActiveRecord::Schema.define(version: 20150426130721) do
 
   create_table "budgets", force: true do |t|
     t.string   "title"
@@ -22,7 +22,10 @@ ActiveRecord::Schema.define(version: 20140619085914) do
     t.string   "section",          default: "out", null: false
     t.boolean  "default_income"
     t.boolean  "default_outgoing"
+    t.integer  "season_id"
   end
+
+  add_index "budgets", ["season_id"], name: "index_budgets_on_season_id", using: :btree
 
   create_table "categories", force: true do |t|
     t.string   "name"
@@ -50,14 +53,20 @@ ActiveRecord::Schema.define(version: 20140619085914) do
     t.integer  "member_id"
     t.string   "status",      default: "open"
     t.integer  "budget_id"
+    t.integer  "season_id"
   end
+
+  add_index "expenses", ["season_id"], name: "index_expenses_on_season_id", using: :btree
 
   create_table "groups", force: true do |t|
     t.string   "name",       null: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "show_order"
+    t.integer  "season_id"
   end
+
+  add_index "groups", ["season_id"], name: "index_groups_on_season_id", using: :btree
 
   create_table "incomes", force: true do |t|
     t.date     "obtained_date"
@@ -69,7 +78,10 @@ ActiveRecord::Schema.define(version: 20140619085914) do
     t.datetime "updated_at"
     t.integer  "member_id"
     t.integer  "budget_id"
+    t.integer  "season_id"
   end
+
+  add_index "incomes", ["season_id"], name: "index_incomes_on_season_id", using: :btree
 
   create_table "link_menus", force: true do |t|
     t.string   "viewtext",                  null: false
@@ -88,11 +100,21 @@ ActiveRecord::Schema.define(version: 20140619085914) do
     t.datetime "updated_at"
     t.integer  "part_id"
     t.integer  "category_id"
+    t.integer  "season_id"
   end
+
+  add_index "members", ["season_id"], name: "index_members_on_season_id", using: :btree
 
   create_table "parts", force: true do |t|
     t.string   "name"
     t.integer  "show_order"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "seasons", force: true do |t|
+    t.integer  "index",       null: false
+    t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

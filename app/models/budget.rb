@@ -2,6 +2,7 @@ class Budget < ActiveRecord::Base
   validates :title, presence: true
   validates :amount, presence: true
 
+  belongs_to :season
   belongs_to :group
   has_many :expenses
   has_many :incomes

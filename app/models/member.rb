@@ -1,4 +1,5 @@
 class Member < ActiveRecord::Base
+  belongs_to :season
   belongs_to :part
   belongs_to :category
   has_many :incomes
