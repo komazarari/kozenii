@@ -16,10 +16,10 @@ module ApplicationHelper
   end
 
   def current_season
-    if session['season_id'].nil?
+    if session[:season_id].nil?
       Season.last
     else
-      Season.find(session['season_id'])
+      Season.find(session[:season_id])
     end
   end
 end

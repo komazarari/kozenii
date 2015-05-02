@@ -43,7 +43,8 @@
                 .caret
               %ul.dropdown-menu(role="menu" aria-labelledby="dLabel")
                 - Season.all.each do |season|
-                  %li.text-center= season.description
+                  %li.text-center
+                    = link_to season.description, season_path(season), method: :put
 
           .container.nav-collapse
             %ul.nav
