@@ -14,4 +14,12 @@ module ApplicationHelper
       str[0..num] + '...'
     end
   end
+
+  def current_season
+    if session['season_id'].nil?
+      Season.last
+    else
+      Season.find(session['season_id'])
+    end
+  end
 end
