@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150426130721) do
+ActiveRecord::Schema.define(version: 20150503071505) do
 
   create_table "budgets", force: true do |t|
     t.string   "title"
@@ -33,7 +33,10 @@ ActiveRecord::Schema.define(version: 20150426130721) do
     t.integer  "ext_due",    default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "season_id"
   end
+
+  add_index "categories", ["season_id"], name: "index_categories_on_season_id", using: :btree
 
   create_table "comments", force: true do |t|
     t.text     "body"
