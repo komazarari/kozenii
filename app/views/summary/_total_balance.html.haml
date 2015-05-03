@@ -8,19 +8,19 @@
   %tbody
     %tr
       %th= t(:income)
-      %td.num= number_to_currency Budget.incomes.sum(:amount)
-      %th.num= number_to_currency Income.sum(:amount)
+      %td.num= number_to_currency @budget_incomes.sum(:amount)
+      %th.num= number_to_currency @incomes.sum(:amount)
     %tr
       %th= t(:outgoing)
-      %td.num= number_to_currency Budget.outgoings.sum(:amount)
-      %th.num= number_to_currency Expense.sum(:amount)
+      %td.num= number_to_currency @budget_outgoings.sum(:amount)
+      %th.num= number_to_currency @expenses.sum(:amount)
     %tr
       %td.text-warning
         \:
         = t(:not_closed)
       %td -
-      %td.text-warning.num.small= "(#{number_to_currency Expense.not_closed.sum(:amount)})"
+      %td.text-warning.num.small= "(#{number_to_currency @expenses.not_closed.sum(:amount)})"
     %tr.summary
       %th
-      %td.num= number_to_currency (Budget.incomes.sum(:amount) - Budget.outgoings.sum(:amount))
-      %th.num= number_to_currency (Income.sum(:amount) - Expense.sum(:amount))
+      %td.num= number_to_currency (@budget_in_out)
+      %th.num= number_to_currency (@actual_in_out)

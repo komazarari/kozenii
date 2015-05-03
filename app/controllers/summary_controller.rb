@@ -1,6 +1,6 @@
 class SummaryController < ApplicationController
+  before_action :set_in_out, only: [:show]
+
   def show
-    @outgoings = Budget.outgoings.group_order
-    @incomes = Budget.incomes.group_order
   end
 end

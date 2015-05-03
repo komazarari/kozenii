@@ -1,12 +1,13 @@
 class ExpensesController < ApplicationController
   before_action :admin_required, only: [:new_balancer, :balanced_out]
   before_action :set_expense, only: [:show, :edit, :update, :destroy, :comments, :new_balancer, :balanced_out]
+  before_action :set_form_options, only: [:new, :edit]
   before_action :do_nothing_if_closed, only: [:new_balancer, :balanced_out]
   respond_to :html, :json
 
 
   def index
-    @q = Expense.search(params[:q])
+    @q = Expense.season(cs).search(params[:q])
     @expenses = @q.result.desc.page params[:page]
   end
 
@@ -90,6 +91,12 @@ class ExpensesController < ApplicationController
                                     :status,
                                     :user_note,
                                     :status)
+  end
+
+  def set_form_options
+    @members = Member.season(cs).part_order
+    @budget_incomes = Budget.season(cs).incomes.group_order
+    @budget_outgoings = Budget.season(cs).outgoings.group_order
   end
 
   def balancer_params

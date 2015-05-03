@@ -4,7 +4,7 @@ class Admin::GroupsController < Admin::BaseController
   respond_to :html, :json
 
   def index
-    @groups = Group.all
+    @groups = Group.season(cs).all
   end
 
   def new

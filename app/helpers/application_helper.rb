@@ -16,10 +16,6 @@ module ApplicationHelper
   end
 
   def current_season
-    if session[:season_id].nil?
-      Season.last
-    else
-      Season.find(session[:season_id])
-    end
+    Season.find_by(session[:season_id])
   end
 end

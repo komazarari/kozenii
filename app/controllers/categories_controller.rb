@@ -3,7 +3,7 @@ class CategoriesController < ApplicationController
   respond_to :html, :json
 
   def index
-    @categories = Category.all
+    @categories = Category.season(cs).all
   end
 
   def show

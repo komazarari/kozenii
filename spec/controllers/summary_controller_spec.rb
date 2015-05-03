@@ -5,6 +5,7 @@ describe SummaryController do
     sign_in FactoryGirl.create(:user)
   end
   let(:valid_session) { {} }
+  let(:season) { Season.create }
 
   let(:valid_attributes_for_budget) { { "title" => "MyTitle", "amount" => "1425", "section" => 'out' } }
 
@@ -13,13 +14,13 @@ describe SummaryController do
 
       out = Budget.create! valid_attributes_for_budget
       get :show, {}, valid_session
-      expect(assigns(:outgoings)).to eq([out])
+      expect(assigns(:budget_outgoings)).to eq([out])
     end
 
     it "assigns all incomes as @incomes" do
       inc = Budget.create! valid_attributes_for_budget.merge({ "section" => 'in' })
       get :show, {}, valid_session
-      expect(assigns(:incomes)).to eq([inc])
+      expect(assigns(:budget_incomes)).to eq([inc])
     end
 
     it "returns http success" do

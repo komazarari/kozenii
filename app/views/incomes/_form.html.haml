@@ -23,11 +23,11 @@
     .control-group
       = f.label :member_id, t(:member), class: "control-label"
       .controls
-        = f.select :member_id, options_from_collection_for_select(Member.part_order, :id, :nick, selected: @income.member_id), {include_blank: t(:other_member)}
+        = f.select :member_id, options_from_collection_for_select(@members, :id, :nick, selected: @income.member_id), {include_blank: t(:other_member)}
     .control-group
       = f.label :budget_id, t(:budget), class: "control-label"
       .controls
-        = f.select :budget_id, options_from_collection_for_select(Budget.incomes, :id, :title, selected: @income.budget_id || Budget.default_income), {include_blank: false}
+        = f.select :budget_id, options_from_collection_for_select(@budget_incomes, :id, :title, selected: @income.budget_id || @budget_default_income), {include_blank: false}
     .control-group
       = f.label :comment, t(:comment), class: "control-label"
       .controls

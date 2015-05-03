@@ -1,9 +1,10 @@
 class MembersController < ApplicationController
   before_action :set_member, only: [:show, :edit, :update, :destroy]
+  before_action :set_form_options, only: [:new, :edit]
   respond_to :html, :json
 
   def index
-    @members = Member.all
+    @members = Member.season(cs).all
   end
 
   def show
@@ -50,4 +51,7 @@ class MembersController < ApplicationController
                                    :obligation)
   end
 
+  def set_form_options
+    @categories = Category.season(cs)
+  end
 end
