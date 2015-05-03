@@ -51,7 +51,8 @@ class MembersController < ApplicationController
                                    :yomi,
                                    :part_id,
                                    :category_id,
-                                   :obligation)
+                                   :obligation,
+                                   :season_id)
   end
 
   def set_form_options

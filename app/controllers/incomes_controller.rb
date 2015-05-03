@@ -55,7 +55,8 @@ class IncomesController < ApplicationController
                                    :description,
                                    :member_id,
                                    :budget_id,
-                                   :comment)
+                                   :comment,
+                                   :season_id)
   end
 
   def set_form_options

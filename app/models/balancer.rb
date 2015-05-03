@@ -18,6 +18,7 @@ class Balancer
       budget_id: budget_id,
       member_id: @expense.member_id,
       comment: comment,
+      season_id: @expense.season_id,
     }
     Income.new(income_params)
   end
