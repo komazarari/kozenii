@@ -7,6 +7,7 @@ class Member < ActiveRecord::Base
 
   validates :fullname, presence: true
 
+  include Seasonable
   scope :part_order, -> { Member.includes(:part).order("parts.show_order") }
 
   def paid

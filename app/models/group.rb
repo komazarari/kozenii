@@ -3,4 +3,6 @@ class Group < ActiveRecord::Base
 
   belongs_to :season
   has_many :budgets
+
+  include Seasonable
 end
