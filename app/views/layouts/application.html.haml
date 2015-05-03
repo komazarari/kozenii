@@ -28,7 +28,9 @@
             %span.icon-bar
             %span.icon-bar
           %a.brand(href="/")
-            %b= (ENV['APP_TITLE'] || t(:AppTitle))
+            %b
+              = (ENV['APP_TITLE'] || t(:AppTitle))
+              = current_season.try(:description)
           - if user_signed_in?
             .btn-group.pull-right
               %a.btn.dropdoun-toggle(data-toggle="dropdown" href="#")
