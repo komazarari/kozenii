@@ -90,7 +90,8 @@ class ExpensesController < ApplicationController
                                     :budget_id,
                                     :status,
                                     :user_note,
-                                    :status)
+                                    :status,
+                                    :season_id)
   end
 
   def set_form_options

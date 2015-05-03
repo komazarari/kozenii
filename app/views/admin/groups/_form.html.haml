@@ -4,6 +4,7 @@
       - @group.errors.full_messages.each do |msg|
         %li= msg
 = form_for([:admin, @group], html: {class: "form-horizontal"}) do |f|
+  = f.hidden_field :season_id, value: @season_id
   %fieldset
     .control-group
       = f.label :name, t(:name), class: "control-label"

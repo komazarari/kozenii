@@ -41,6 +41,6 @@ class Admin::GroupsController < Admin::BaseController
   end
 
   def group_params
-    params.require(:group).permit(:name, :show_order)
+    params.require(:group).permit(:name, :show_order, :season_id)
   end
 end

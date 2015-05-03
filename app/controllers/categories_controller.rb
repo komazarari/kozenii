@@ -45,6 +45,6 @@ class CategoriesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def category_params
-      params.require(:category).permit(:name, :basic_due, :ext_due)
+      params.require(:category).permit(:name, :basic_due, :ext_due, :season_id)
     end
 end
