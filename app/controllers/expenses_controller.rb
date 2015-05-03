@@ -7,8 +7,8 @@ class ExpensesController < ApplicationController
 
 
   def index
-    @q = Expense.season(cs).search(params[:q])
-    @expenses = @q.result.desc.page params[:page]
+    @q_e = Expense.season(cs).search(params[:q])
+    @expenses = @q_e.result.desc.page params[:page]
   end
 
   def show

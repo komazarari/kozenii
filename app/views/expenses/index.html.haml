@@ -11,7 +11,7 @@
   .icon-minus-sign
   Search
 
-= search_form_for @q, {class: "form-search", id: "expenses_search_form"} do |f|
+= search_form_for @q_e, {class: "form-search", id: "expenses_search_form"} do |f|
   .row.span12
     = f.label :description_cont, t(:description)
     = f.search_field :description_cont, {class: "search-query"}

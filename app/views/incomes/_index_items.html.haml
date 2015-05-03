@@ -1,11 +1,11 @@
 %table.table.table-condensed.table-striped#incomes
   %thead
     %tr
-      %th= sort_link(@q, :id, 'ID')
-      %th= sort_link(@q, :obtained_date, t(:_date))
-      %th= sort_link(@q, :description, t(:description))
-      %th= sort_link(@q, :amount, t(:amount))
-      %th= sort_link(@q, :member_part_show_order, t(:member))
+      %th= sort_link(@q_i, :id, 'ID')
+      %th= sort_link(@q_i, :obtained_date, t(:_date))
+      %th= sort_link(@q_i, :description, t(:description))
+      %th= sort_link(@q_i, :amount, t(:amount))
+      %th= sort_link(@q_i, :member_part_show_order, t(:member))
       %th= t(:edit)
       %th= t(:delete)
   %tbody

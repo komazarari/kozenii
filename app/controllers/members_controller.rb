@@ -8,8 +8,11 @@ class MembersController < ApplicationController
   end
 
   def show
-    @expenses = Expense.where(member_id: @member.id)
-    @incomes = Income.where(member_id: @member.id)
+    @q_i = Income.where(member_id: @member.id).search(params[:q])
+    @incomes =  @q_i.result.desc.page params[:page]
+
+    @q_e = Expense.where(member_id: @member.id).search(params[:q])
+    @expenses = @q_e.result.desc.page params[:page]
   end
 
   def new

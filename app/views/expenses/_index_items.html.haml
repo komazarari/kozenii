@@ -1,13 +1,13 @@
 %table.table.table-condensed.table-striped#expenses
   %thead
     %tr
-      %th= sort_link(@q, :id, 'ID')
-      %th= sort_link(@q, :used_date, t(:_date))
-      %th= sort_link(@q, :description, t(:description))
-      %th= sort_link(@q, :amount, t(:amount))
-      %th= sort_link(@q, :member_part_show_order, t(:member))
-      %th= sort_link(@q, :budget_group_show_order, t(:charged))
-      %th= sort_link(@q, :status, t(:status))
+      %th= sort_link(@q_e, :id, 'ID')
+      %th= sort_link(@q_e, :used_date, t(:_date))
+      %th= sort_link(@q_e, :description, t(:description))
+      %th= sort_link(@q_e, :amount, t(:amount))
+      %th= sort_link(@q_e, :member_part_show_order, t(:member))
+      %th= sort_link(@q_e, :budget_group_show_order, t(:charged))
+      %th= sort_link(@q_e, :status, t(:status))
       %th= t(:edit)
       %th= t(:delete)
   %tbody

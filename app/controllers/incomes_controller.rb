@@ -5,8 +5,8 @@ class IncomesController < ApplicationController
   respond_to :html, :json
 
   def index
-    @q = Income.season(cs).search(params[:q])
-    @incomes = @q.result.desc.page params[:page]
+    @q_i = Income.season(cs).search(params[:q])
+    @incomes = @q_i.result.desc.page params[:page]
   end
 
   def show
