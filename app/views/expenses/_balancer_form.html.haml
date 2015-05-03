@@ -11,7 +11,7 @@
     .control-group
       = label_tag :balancer_expense_budget_id, t(:budget), class: "control-label"
       .controls
-        = select :balancer, :expense_budget_id, options_from_collection_for_select(Budget.outgoings, :id, :title, selected: @expense.budget_id)
+        = select :balancer, :expense_budget_id, options_from_collection_for_select(@budget_outgoings, :id, :title, selected: @expense.budget_id)
 
   %h3= "Create New Income"
   %dl.dl-horizontal
@@ -28,7 +28,7 @@
     .control-group
       = label_tag :balancer_budget_id, t(:budget), class: "control-label"
       .controls
-        = select :balancer, :budget_id, options_from_collection_for_select(Budget.incomes, :id, :title, selected: @balancer.budget_id)
+        = select :balancer, :budget_id, options_from_collection_for_select(@budget_incomes, :id, :title, selected: @balancer.budget_id)
     .control-group
       = label_tag :balancer_comment, t(:comment), class: "control-label"
       .controls

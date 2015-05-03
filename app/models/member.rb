@@ -1,4 +1,5 @@
 class Member < ActiveRecord::Base
+  belongs_to :season
   belongs_to :part
   belongs_to :category
   has_many :incomes
@@ -6,6 +7,7 @@ class Member < ActiveRecord::Base
 
   validates :fullname, presence: true
 
+  include Seasonable
   scope :part_order, -> { Member.includes(:part).order("parts.show_order") }
 
   def paid

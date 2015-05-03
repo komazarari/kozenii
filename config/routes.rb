@@ -3,6 +3,7 @@ Kozenii::Application.routes.draw do
   devise_for :users
 
   resources :users
+  resources :seasons, only: [:index, :show, :update]
 
   resources :expenses do
     post 'update_comments'

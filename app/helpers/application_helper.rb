@@ -14,4 +14,8 @@ module ApplicationHelper
       str[0..num] + '...'
     end
   end
+
+  def current_season
+    Season.find_by(session[:season_id])
+  end
 end

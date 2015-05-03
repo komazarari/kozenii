@@ -1,10 +1,11 @@
 class Admin::BudgetsController < Admin::BaseController
   before_action :admin_required
   before_action :set_budget, only: [:show, :edit, :update, :destroy]
+  before_action :set_groups, only: [:new, :edit]
   respond_to :html, :json
 
   def index
-    @budgets = Budget.all
+    @budgets = Budget.season(cs).all
   end
 
   def show
@@ -39,11 +40,15 @@ class Admin::BudgetsController < Admin::BaseController
   end
 
   private
-    def set_budget
-      @budget = Budget.find(params[:id])
-    end
+  def set_budget
+    @budget = Budget.find(params[:id])
+  end
 
-    def budget_params
-      params.require(:budget).permit(:title, :amount, :group_id, :section, :default_income, :default_outgoing)
-    end
+  def budget_params
+    params.require(:budget).permit(:title, :amount, :group_id, :section, :default_income, :default_outgoing)
+  end
+
+  def set_groups
+    @groups = Group.season(cs).order(:show_order)
+  end
 end

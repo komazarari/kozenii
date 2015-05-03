@@ -5,4 +5,4 @@
     %tr
       %th= t(:remaining)
       %td
-      %td.num= number_to_currency (Income.sum(:amount) - Expense.sum(:amount))
+      %td.num= number_to_currency @actual_in_out

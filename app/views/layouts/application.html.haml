@@ -37,6 +37,14 @@
                 .caret
               %ul.dropdown-menu
                 %li= link_to t(:sign_out), destroy_user_session_path, :method => :delete
+            .btn-group.pull-right
+              %a.btn.dropdown-toggle(data-toggle="dropdown" data-target="#" href="/")
+                = current_season.try(:description)
+                .caret
+              %ul.dropdown-menu(role="menu" aria-labelledby="dLabel")
+                - Season.all.each do |season|
+                  %li.text-center
+                    = link_to season.description, season_path(season), method: :put
 
           .container.nav-collapse
             %ul.nav
