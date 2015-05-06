@@ -16,6 +16,6 @@ module ApplicationHelper
   end
 
   def current_season
-    Season.find_by(session[:season_id])
+    Season.find_by(id: session[:season_id])
   end
 end
