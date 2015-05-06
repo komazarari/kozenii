@@ -13,12 +13,12 @@ gem 'uglifier', '>= 1.3.0'
 
 
 gem 'less-rails'
-gem 'twitter-bootstrap-rails', git: 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
+gem 'twitter-bootstrap-rails', '~>2.0'
 
 gem 'devise'
 gem 'haml-rails'
 gem 'figaro'
-gem 'kaminari', github: 'amatsuda/kaminari', ref: 'v0.16.1'
+gem 'kaminari'
 gem 'ransack'
 
 # Use CoffeeScript for .js.coffee assets and views
