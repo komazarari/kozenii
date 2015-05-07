@@ -28,7 +28,7 @@
     .control-group
       = f.label :budget_id, t(:budget), class: "control-label"
       .controls
-        = f.select :budget_id, options_from_collection_for_select(@budgets_outgoings, :id, :title, selected: @expense.budget_id), {include_blank: true}
+        = f.select :budget_id, options_from_collection_for_select(@budget_outgoings, :id, :title, selected: @expense.budget_id), {include_blank: true}
     - if current_user.admin?
       .control-group
         = f.label :status, t(:status), class: "control-label"
