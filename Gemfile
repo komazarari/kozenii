@@ -64,6 +64,12 @@ group :test, :development do
   gem 'guard-spring'
 end
 
+group :development do
+  gem 'pry-rails'
+  gem 'meta_request'
+  gem 'quiet_assets'
+end
+
 group :test do
   gem 'cucumber-rails', :require => false
   gem 'database_cleaner', '~> 1'
