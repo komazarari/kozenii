@@ -1,66 +1,70 @@
 .row
-  .span10.page-header
-    %h2.span2.inline Details
+  .page-header
+    %h2.inline Details
     - if @expense.open? || current_user.admin?
-      = link_to edit_expense_path(@expense), {class: "span1 btn btn-success" } do |expense|
-        %i.icon-edit.icon-white
+      = link_to edit_expense_path(@expense), {class: "pull-right btn btn-success" } do |expense|
+        %span.glyphicon.glyphicon-edit
         = t(:edit)
     - else
-      .span1.btn.btn-success.disabled
-        %i.icon-edit.icon-white
+      .btn.btn-success.disabled
+        %span.glyphicon.glyphicon-edit
         = t(:edit)
     - if @expense.open? && current_user.admin?
-      = link_to new_balancer_expense_path(@expense), {class: "span1 btn btn-primary" } do
-        %i.icon-edit.icon-white
+      = link_to new_balancer_expense_path(@expense), {class: "pull-right btn btn-primary" } do
+        %span.glyphicon.glyphicon-transfer
         = t(:balance_out)
     - else
-      .span1.btn.btn-primary.disabled
-        %i.icon-edit.icon-white
+      .pull-right.btn.btn-primary.disabled
+        %span.glyphicon.glyphicon-transfer
         = t(:balance_out)
 
 - if @expense.valid_req
   %dl
     .row
-      %dt.span1 No.
-      %dd.span2= @expense.id
-      %dt.span1= t(:_date)
-      %dd= l @expense.used_date
-      %dt.span1= t(:member)
-      %dd= @expense.member.try(:fullname)
+      %dt.col-xs-2 No.
+      %dd.col-xs-2= @expense.id
+      %dt.col-xs-offset-2.col-xs-1= t(:_date)
+      %dd.col-xs-2= l @expense.used_date
     .row
-      %dt.span1= t(:charge)
-      %dd.span2
+      %dt.col-xs-2= t(:member)
+      %dd.col-xs-2= @expense.member.try(:fullname)
+    .row
+      %dt.col-xs-2= t(:charge)
+      %dd.col-xs-4
         - if @expense.budget
           = @expense.budget.group.name
           = @expense.budget.title
         - else
           %strong.text-error None
-      %dt.span1= t(:status)
+      %dt.col-xs-1= t(:status)
       %dd
         %strong
           - if @expense.closed?
-            .text-success.span1= t(:closed)
+            .text-success.col-xs-1= t(:closed)
           - else
-            .text-error.span1= t(:open)
+            .text-error.col-xs-1= t(:open)
     %h5.row
-      %dt.span1= t(:amount)
-      %dd.span2= number_to_currency(@expense.amount)
-    %dt
-      %h5= t(:description)
-    %dd= @expense.description
-    %dt
-      %h5= t(:user_note)
-    %dd= @expense.user_note
+      %dt.col-xs-2= t(:amount)
+      %dd.col-xs-2= number_to_currency(@expense.amount)
+    %h5.row
+      %dt.col-xs-2= t(:description)
+      %dd.col-xs-6= @expense.description
+    %h5.row
+      %dt.col-xs-2= t(:user_note)
+      %dd.col-xs-6= @expense.user_note
 - else
   %h4 Invalid entry
 <hr>
-%h5  comments
+.row
+  %h4.col-xs-2  Comments
 #comments
   = render 'comments'
 
 <hr>
-%dl.dl-horizontal
-  %dt Created at
-  %dd= @expense.created_at.getlocal
-  %dt Updated at
-  %dd= @expense.updated_at.getlocal
+%dl
+  .row
+    %dt.col-xs-2 Created at
+    %dd.col-xs-4= @expense.created_at.getlocal
+  .row
+    %dt.col-xs-2 Updated at
+    %dd.col-xs-4= @expense.updated_at.getlocal

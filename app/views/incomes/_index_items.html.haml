@@ -18,7 +18,7 @@
         %td= i.member.try(:nick)
         %td
           = link_to_if_with_block current_user.admin?, edit_income_path(i) do
-            %i.icon-edit
+            %span.glyphicon.glyphicon-edit
         %td
           = link_to_if_with_block current_user.admin?, i, method: :delete, data: { confirm: 'Are you sure?' } do
-            %i.icon-trash
+            %span.glyphicon.glyphicon-trash

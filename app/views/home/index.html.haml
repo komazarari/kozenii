@@ -1,34 +1,33 @@
 .row
-  .span10
-    %h1
-      = ENV['MAIN_TITLE'] || "Kozenii"
-      %small
-        = ENV['SUB_TITLE'] || "simple account management"
-.row
-  %h2
-    = link_to new_expense_path, { class: "span2 btn btn-primary btn-large", id: "new_expense", title: "Apply New" } do
-      %i.icon-pencil.icon-white
-      = t(:report_expense)
-    - if current_user.admin?
-      = link_to new_expense_path, { class: "span2 btn btn-warning btn-large", id: "new_income" } do
-        %i.icon-plus.icon-white
-        = t(:register_income)
-    - else
-      .span2.btn.btn-warning.btn-large.disabled
-        %i.icon-plus.icon-white
-        = t(:register_income)
-    - if current_user.admin?
-      = link_to expenses_path, { class: "span2 btn btn-success btn-large", id: "adjust_expense" } do
-        %i.icon-file.icon-white
-        = t(:adjust_expense)
-    - else
-      .span2.btn.btn-success.btn-large.disabled
-        %i.icon-plus.icon-white
-        = t(:adjust_expense)
-    .span12
+  %h1.col-xs-12
+    = ENV['MAIN_TITLE'] || "Kozenii"
+    %small
+      = ENV['SUB_TITLE'] || "simple account management"
 
 .row
-  .span10.page-header
+  %h2.col-xs-12
+    = link_to new_expense_path, { class: "btn btn-primary btn-large", id: "new_expense", title: "Apply New" } do
+      %span.glyphicon.glyphicon-pencil
+      = t(:report_expense)
+    - if current_user.admin?
+      = link_to new_expense_path, { class: "btn btn-warning btn-large", id: "new_income" } do
+        %span.glyphicon.glyphicon-plus
+        = t(:register_income)
+    - else
+      .btn.btn-warning.btn-large.disabled
+        %span.glyphicon.glyphicon-plus
+        = t(:register_income)
+    - if current_user.admin?
+      = link_to expenses_path, { class: "btn btn-success btn-large", id: "adjust_expense" } do
+        %span.glyphicon.glyphicon-file
+        = t(:adjust_expense)
+    - else
+      .btn.btn-success.btn-large.disabled
+        %span.glyphicon.glyphicon-file
+        = t(:adjust_expense)
+
+.row
+  .page-header.col-xs-12
 
 %h2= link_to t(:summary), summary_path
 = render template: "summary/_total_balance"

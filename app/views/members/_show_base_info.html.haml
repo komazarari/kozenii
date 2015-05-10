@@ -11,7 +11,10 @@
   %dd= @member.obligation
   %dt= t(:category)
   %dd= @member.category.try(:name) || '-'
-
+  %dt= t(:paid)
+  %dd= @member.paid
+  %dt= t(:remain)
+  %dd= @member.remain
 
 %dl.dl-horizontal
   %dt ID

@@ -13,7 +13,7 @@ gem 'uglifier', '>= 1.3.0'
 
 
 gem 'less-rails'
-gem 'twitter-bootstrap-rails', '~>2.0'
+gem 'twitter-bootstrap-rails', '~>3.0'
 
 gem 'devise'
 gem 'haml-rails'

@@ -6,32 +6,33 @@
 = form_for(@income, html: {class: "form-horizontal"}) do |f|
   = f.hidden_field :season_id, value: @season_id
   %fieldset
-    .control-group
-      .controls.small-text
+    .form-group
+      .col-sm-2.small-text.control-label
         = t(:required, default: 'required(*)')
-    .control-group
-      = f.label :obtained_date, t(:obtained_date) + '*', class: "control-label"
-      .controls
-        = f.date_select :obtained_date, {use_month_numbers: true, order: [:year, :month, :day]}, {class: "date_select"}
-    .control-group
-      = f.label :amount, t(:amount) + '*', class: "control-label"
-      .controls
-        = f.number_field :amount
-    .control-group
-      = f.label :description, t(:description) + '*', class: "control-label"
-      .controls
-        = f.text_field :description
-    .control-group
-      = f.label :member_id, t(:member), class: "control-label"
-      .controls
-        = f.select :member_id, options_from_collection_for_select(@members, :id, :nick, selected: @income.member_id), {include_blank: t(:other_member)}
-    .control-group
-      = f.label :budget_id, t(:budget), class: "control-label"
-      .controls
-        = f.select :budget_id, options_from_collection_for_select(@budget_incomes, :id, :title, selected: @income.budget_id || @budget_default_income), {include_blank: false}
-    .control-group
-      = f.label :comment, t(:comment), class: "control-label"
-      .controls
-        = f.text_field :comment
-    .form-actions
-      = f.submit t(:submit, default: "Submit"), class: "btn btn-primary"
+    .form-group
+      = f.label :obtained_date, t(:obtained_date) + '*', class: "col-sm-2 control-label"
+      .col-sm-6
+        = f.date_select :obtained_date, {use_month_numbers: true, order: [:year, :month, :day]}, {class: "form-control date-select"}
+    .form-group
+      = f.label :amount, t(:amount) + '*', class: "col-sm-2 control-label"
+      .col-sm-4
+        = f.number_field :amount, {class: "form-control"}
+    .form-group
+      = f.label :description, t(:description) + '*', class: "col-sm-2 control-label"
+      .col-sm-8
+        = f.text_field :description, {class: "form-control"}
+    .form-group
+      = f.label :member_id, t(:member), class: "col-sm-2 control-label"
+      .col-sm-4
+        = f.select :member_id, options_from_collection_for_select(@members, :id, :nick, selected: @income.member_id), {include_blank: t(:other_member)}, {class: "form-control"}
+    .form-group
+      = f.label :budget_id, t(:budget), class: "col-sm-2 control-label"
+      .col-sm-4
+        = f.select :budget_id, options_from_collection_for_select(@budget_incomes, :id, :title, selected: @income.budget_id || @budget_default_income), {include_blank: false}, {class: "form-control"}
+    .form-group
+      = f.label :comment, t(:comment), class: "col-sm-2 control-label"
+      .col-sm-8
+        = f.text_field :comment, {class: "form-control"}
+    .form-group
+      .col-sm-offset-2.col-sm-3
+        = f.submit t(:submit, default: "Submit"), class: "btn btn-primary"
