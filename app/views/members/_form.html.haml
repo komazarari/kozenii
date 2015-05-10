@@ -3,31 +3,33 @@
     %ul
       - @member.errors.full_messages.each do |msg|
         %li= msg
+
 = form_for(@member, html: {class: "form-horizontal"}) do |f|
   = f.hidden_field :season_id, value: @season_id
   %fieldset
-    .control-group
-      .controls.small-text
+    .form-group
+      .small-text.col-sm-2.control-label
         = t(:required, default: 'required(*)')
-    .control-group
-      = f.label :part_id, t(:part), class: "control-label"
-      .controls
-        = f.select :part_id, options_from_collection_for_select(Part.order(:show_order), :id, :name, selected: @member.part_id), {include_blank: '-'}
-    .control-group
-      = f.label :fullname, t(:fullname) + '*', class: "control-label"
-      .controls
-        = f.text_field :fullname
-    .control-group
-      = f.label :yomi, t(:yomi) + '*', class: "control-label"
-      .controls
-        = f.text_field :yomi
-    .control-group
-      = f.label :nick, t(:nick) + '*', class: "control-label"
-      .controls
-        = f.text_field :nick
-    .control-group
-      = f.label :category_id, t(:category), class: "control-label"
-      .controls
-        = f.select :category_id, options_from_collection_for_select(@categories, :id, :name, selected: @member.category_id), {include_blank: '-'} 
-    .form-actions
-      = f.submit t(:submit, default: "Submit"), class: "btn btn-primary"
+    .form-group
+      = f.label :part_id, t(:part), class: "col-sm-2 control-label"
+      .col-sm-4
+        = f.select :part_id, options_from_collection_for_select(Part.order(:show_order), :id, :name, selected: @member.part_id), {include_blank: '-'}, {class: "form-control"}
+    .form-group
+      = f.label :fullname, t(:fullname) + '*', class: "col-sm-2 control-label"
+      .col-sm-8
+        = f.text_field :fullname, {class: "form-control"}
+    .form-group
+      = f.label :yomi, t(:yomi) + '*', class: "col-sm-2 control-label"
+      .col-sm-8
+        = f.text_field :yomi, {class: "form-control"}
+    .form-group
+      = f.label :nick, t(:nick) + '*', class: "col-sm-2 control-label"
+      .col-sm-8
+        = f.text_field :nick, {class: "form-control"}
+    .form-group
+      = f.label :category_id, t(:category), class: "col-sm-2 control-label"
+      .col-sm-4
+        = f.select :category_id, options_from_collection_for_select(@categories, :id, :name, selected: @member.category_id), {include_blank: '-'}, {class: "form-control"}
+    .form-group
+      .col-sm-offset-2.col-sm-3
+        = f.submit t(:submit, default: "Submit"), class: "btn btn-primary"

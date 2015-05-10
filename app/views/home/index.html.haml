@@ -1,11 +1,11 @@
 .row
-  %h1
+  %h1.col-xs-12
     = ENV['MAIN_TITLE'] || "Kozenii"
     %small
       = ENV['SUB_TITLE'] || "simple account management"
 
 .row
-  %h2
+  %h2.col-xs-12
     = link_to new_expense_path, { class: "btn btn-primary btn-large", id: "new_expense", title: "Apply New" } do
       %span.glyphicon.glyphicon-pencil
       = t(:report_expense)
@@ -26,7 +26,8 @@
         %span.glyphicon.glyphicon-file
         = t(:adjust_expense)
 
-.row.page-header
+.row
+  .page-header.col-xs-12
 
 %h2= link_to t(:summary), summary_path
 = render template: "summary/_total_balance"

@@ -1,4 +1,14 @@
 %h3= @member.fullname
+- if current_user.admin?
+  %h5.inline
+    = link_to edit_member_path(@member) do |n|
+      %span.glyphicon.glyphicon-edit
+      edit
+  %h5.inline
+    = link_to @member, method: :delete, data: { confirm: 'Are you sure?' } do |n|
+      %span.glyphicon.glyphicon-trash
+      delete
+
 .tabbable
   %ul.nav.nav-tabs
     %li.active= link_to t(:base_info), "#base_info_tab", "data-toggle" => "tab"
@@ -9,11 +19,11 @@
       = render "show_base_info"
     #expenses_tab.tab-pane
       .row
-        = link_to new_expense_path(expense: {member_id: @member.id}), { class: "spen1 pull-right btn btn-primary" } do
-          %i.icon-plus.icon-white
+        = link_to new_expense_path(expense: {member_id: @member.id}), { class: "col-xs-1 pull-right btn btn-primary" } do
+          %span.glyphicon.glyphicon-plus
       = render template: "expenses/_index_items"
     #incomes_tab.tab-pane
       .row
-        = link_to new_income_path(income: {member_id: @member.id}), { class: "spen1 pull-right btn btn-primary" } do
-          %i.icon-plus.icon-white
+        = link_to new_income_path(income: {member_id: @member.id}), { class: "col-xs-1 pull-right btn btn-primary" } do
+          %span.glyphicon.glyphicon-plus
       = render template: "incomes/_index_items"
