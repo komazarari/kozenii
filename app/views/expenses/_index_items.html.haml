@@ -20,16 +20,16 @@
         %td= e.member.try(:nick)
         %td.text-center
           - if e.budget_id
-            %i.icon-ok
+            %span.glyphicon.glyphicon-ok
         %td
           - if e.closed? && e.budget_id
-            .badge.badge-success= t(:closed)
+            .label.label-success= t(:closed)
           - else
-            = link_to expense_path(e), { class: "badge badge-warning"} do
+            = link_to expense_path(e), { class: "label label-warning"} do
               = e.open? ? t(:open) : t(:closed)
         %td
           = link_to_if_with_block(e.open? || current_user.admin?, edit_expense_path(e)) do
-            %i.icon-edit
+            %span.glyphicon.glyphicon-edit
         %td
           = link_to_if_with_block(e.open? || current_user.admin?, e, method: :delete, data: { confirm: 'Are you sure?' }) do
-            %i.icon-trash
+            %span.glyphicon.glyphicon-trash

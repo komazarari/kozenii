@@ -15,7 +15,3 @@
 .inline {
     display: inline;
 }
-
-.form-control select {
-    width: auto;
-}

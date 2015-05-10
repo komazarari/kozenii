@@ -1,7 +1,7 @@
 class ExpensesController < ApplicationController
   before_action :admin_required, only: [:new_balancer, :balanced_out]
   before_action :set_expense, only: [:show, :edit, :update, :destroy, :comments, :new_balancer, :balanced_out]
-  before_action :set_form_options, only: [:new, :edit]
+  before_action :set_form_options, only: [:new, :edit, :new_balancer]
   before_action :do_nothing_if_closed, only: [:new_balancer, :balanced_out]
   respond_to :html, :json
 

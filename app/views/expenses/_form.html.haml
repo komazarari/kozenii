@@ -6,42 +6,43 @@
 = form_for(@expense, html: {class: "form-horizontal"}) do |f|
   = f.hidden_field :season_id, value: @season_id
   %fieldset
-    .control-group
-      .controls.small-text
+    .form-group
+      .col-sm-2.small-text.control-label
         = t(:required, default: 'required(*)')
-    .control-group
-      = f.label :used_date, t(:used_date) + '*', class: "control-label"
-      .controls
-        = f.date_select :used_date, {use_month_numbers: true, order: [:year, :month, :day]}, {class: "date_select"}
-    .control-group
-      = f.label :amount, t(:amount) + '*', class: "control-label"
-      .controls
-        = f.number_field :amount
-    .control-group
-      = f.label :description, t(:description) + '*', class: "control-label"
-      .controls
-        = f.text_field :description
-    .control-group
-      = f.label :member_id, t(:member), class: "control-label"
-      .controls
-        = f.select :member_id, options_from_collection_for_select(@members, :id, :nick, selected: @expense.member_id), {include_blank: t(:other_member)}
-    .control-group
-      = f.label :budget_id, t(:budget), class: "control-label"
-      .controls
-        = f.select :budget_id, options_from_collection_for_select(@budget_outgoings, :id, :title, selected: @expense.budget_id), {include_blank: true}
+    .form-group
+      = f.label :used_date, t(:used_date) + '*', class: "col-sm-2 control-label"
+      .col-sm-6
+        = f.date_select :used_date, {use_month_numbers: true, order: [:year, :month, :day]}, {class: "form-control date-select"}
+    .form-group
+      = f.label :amount, t(:amount) + '*', class: "col-sm-2 control-label"
+      .col-sm-4
+        = f.number_field :amount, {class: "form-control"}
+    .form-group
+      = f.label :description, t(:description) + '*', class: "col-sm-2 control-label"
+      .col-sm-8
+        = f.text_field :description, {class: "form-control"}
+    .form-group
+      = f.label :member_id, t(:member), class: "col-sm-2 control-label"
+      .col-sm-4
+        = f.select :member_id, options_from_collection_for_select(@members, :id, :nick, selected: @expense.member_id), {include_blank: t(:other_member)}, {class: "form-control"}
+    .form-group
+      = f.label :budget_id, t(:budget), class: "col-sm-2 control-label"
+      .col-sm-4
+        = f.select :budget_id, options_from_collection_for_select(@budget_outgoings, :id, :title, selected: @expense.budget_id), {include_blank: true}, {class: "form-control"}
     - if current_user.admin?
-      .control-group
-        = f.label :status, t(:status), class: "control-label"
-        .controls
-          %label.radio
+      .form-group
+        = f.label :status, t(:status), class: "col-sm-2 control-label"
+        .col-sm-4.radio
+          %label
             = f.radio_button :status, 'open'
             Open
-          %label.radio
+          %label
             = f.radio_button :status, 'closed'
             Closed
-    .control-group
-      = f.label :user_note, t(:user_note), class: "control-label"
-      .controls
-        = f.text_field :user_note
-    .form-actions
-      = f.submit t(:submit, default: "Submit"), class: "btn btn-primary"
+    .form-group
+      = f.label :user_note, t(:user_note), class: "col-sm-2 control-label"
+      .col-sm-8
+        = f.text_field :user_note, {class: "form-control"}
+    .form-group
+      .col-sm-offset-2.col-sm-3
+        = f.submit t(:submit, default: "Submit"), class: "btn btn-primary"
