@@ -1,28 +1,31 @@
 .row
-  .span10.page-header
+  .col-xs-12.page-header
     = link_to incomes_path do
-      %h2.span2.inline Incomes
+      %h2.inline Incomes
     - if current_user.admin?
-      = link_to t(:new), new_income_path, { class: "span2 offset4 inline btn btn-primary", id: "new_income" }
+      = link_to t(:new), new_income_path, { class: "pull-right inline btn btn-primary", id: "new_income" }
     - else
-      .span2.offset4.inline.btn.btn-primary.disabled= t(:new)
+      .pull-right.inline.btn.btn-primary.disabled= t(:new)
 
-%button.btn.btn-info.btn-link.incomes-toggle-button.pull-right
-  .icon-plus-sign
-  Search
-%button.btn.btn-info.btn-link.incomes-toggle-button.pull-right{style: "display: none"}
-  .icon-minus-sign
-  Search
+.row
+  %button.btn.btn-info.btn-link.incomes-toggle-button.pull-right
+    .glyphicon.glyphicon-plus-sign
+    Search
+  %button.btn.btn-info.btn-link.incomes-toggle-button.pull-right{style: "display: none"}
+    .glyphicon.glyphicon-minus-sign
+    Search
 
-= search_form_for @q_i, {class: "form-search", id: "incomes_search_form"} do |f|
-  .row.span12
-    = f.label :description_cont, t(:description)
-    = f.search_field :description_cont, {class: "search-query"}
-    = f.label :member_nick_or_member_yomi_or_member_fullname_cont, t(:member)
-    = f.search_field :member_nick_or_member_yomi_or_member_fullname_cont, {class: "search-query"}
-  .row.span12
-    = f.button type: :submit, class: "btn btn-info span1" do
-      .icon-search.icon-white
+= search_form_for @q_i, {class: "form-inline", id: "incomes_search_form"} do |f|
+  .row
+    .form-group
+      = f.label :description_cont, t(:description)
+      = f.search_field :description_cont, {class: "search-query form-control"}
+    .form-group
+      = f.label :member_nick_or_member_yomi_or_member_fullname_cont, t(:member)
+      = f.search_field :member_nick_or_member_yomi_or_member_fullname_cont, {class: "search-query form-control"}
+    .form-group
+      = f.button type: :submit, class: "btn btn-info" do
+        %span.glyphicon.glyphicon-search
 
 = paginate @incomes
 = render "index_items"
