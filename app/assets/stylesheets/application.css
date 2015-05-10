@@ -16,6 +16,6 @@
     display: inline;
 }
 
-.controls select {
+.form-control select {
     width: auto;
 }
