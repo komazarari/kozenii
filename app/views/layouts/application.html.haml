@@ -29,33 +29,21 @@
           %b
             = (ENV['APP_TITLE'] || t(:AppTitle))
             //= current_season.try(:description)
-        %b
-          %ul.nav.navbar-nav
-            %li
-              %a.nav.dropdoun-toggle(data-toggle="dropdown" href="#")
+            - if user_signed_in?
+              %small.hidden-md.hidden-lg
                 = current_season.try(:description)
-                .caret
-              %ul.dropdown-menu(role="menu")
-                - Season.all.each do |season|
-                  %li
-                    = link_to season.description, season_path(season), method: :put 
+        - if user_signed_in?
+          %b.hidden-xs.hidden-sm
+            %ul.nav.navbar-nav
+              %li
+                %a.nav.dropdoun-toggle(data-toggle="dropdown" href="#")
+                  = current_season.try(:description)
+                  .caret
+                %ul.dropdown-menu(role="menu")
+                  - Season.all.each do |season|
+                    %li
+                      = link_to season.description, season_path(season), method: :put
 
-        - if nil and user_signed_in?
-          .dropdown.navbar-right
-            %a.btn.btn-default.dropdoun-toggle(data-toggle="dropdown" href="#")
-              %span.glyphicon.glyphicon-user
-              = current_user.username
-              .caret
-            %ul.dropdown-menu
-              %li= link_to t(:sign_out), destroy_user_session_path, :method => :delete
-          .dropdown.navbar-right
-            %a.btn.btn-default.dropdown-toggle(data-toggle="dropdown" data-target="#" href="/")
-              = current_season.try(:description)
-              .caret
-            %ul.dropdown-menu(role="menu" aria-labelledby="dLabel")
-              - Season.all.each do |season|
-                %li.text-center
-                  = link_to season.description, season_path(season), method: :put
         .navbar-collapse.collapse.navbar-responsive-collapse
           %ul.nav.navbar-nav
             %li= link_to t(:members), members_path
@@ -75,6 +63,15 @@
                   %li= link_to t(:links), admin_link_menus_path
           %ul.nav.navbar-nav.navbar-right
             - if user_signed_in?
+              %li.dropdown.hidden-md.hidden-lg
+                %a.dropdoun-toggle(data-toggle="dropdown" href="#")
+                  %span.glyphicon.glyphicon-calendar
+                  = current_season.try(:description)
+                  .caret
+                %ul.dropdown-menu
+                  - Season.all.each do |season|
+                    %li
+                      = link_to season.description, season_path(season), method: :put
               %li.dropdown
                 %a.dropdoun-toggle(data-toggle="dropdown" href="#")
                   %span.glyphicon.glyphicon-user
