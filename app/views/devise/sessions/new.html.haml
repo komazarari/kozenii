@@ -7,7 +7,7 @@
       = f.text_field :username, { autofocus: true, class: "form-control half-width"}
     .form-group
       = f.label :password
-      = f.text_field :username, { class: "form-control half-width" }
+      = f.password_field :password, { class: "form-control half-width" }
     - if devise_mapping.rememberable?
       .checkbox
         = f.label :remember_me do
