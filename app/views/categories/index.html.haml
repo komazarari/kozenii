@@ -23,5 +23,4 @@
         %td.num= number_to_currency e.ext_due
         %td
           = link_to_if_with_block current_user.admin?, edit_category_path(e) do
-            %i.icon-edit
-
+            %span.glyphicon.glyphicon-edit
