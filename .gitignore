@@ -25,3 +25,6 @@ db/production-seeds.rb
 
 # Ignore test reports
 /coverage
+
+# Ignore vendor modules
+/vendor/bundle
