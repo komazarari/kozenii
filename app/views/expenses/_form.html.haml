@@ -12,7 +12,7 @@
     .form-group
       = f.label :used_date, t(:used_date) + '*', class: "col-sm-2 control-label"
       .col-sm-8
-        = f.date_select :used_date, {use_month_numbers: true, order: [:year, :month, :day]}, {class: "width-auto form-control visible-lg-inline visible-md-inline visible-sm-inline"}
+        = f.date_select :used_date, {use_month_numbers: true, order: [:year, :month, :day]}, {class: "width-auto form-control visible-lg-inline visible-md-inline visible-sm-inline visible-xs-inline"}
     .form-group
       = f.label :amount, t(:amount) + '*', class: "col-sm-2 control-label"
       .col-sm-4
