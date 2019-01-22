@@ -15,3 +15,7 @@
 .inline {
     display: inline;
 }
+
+select.width-auto {
+    width: auto;
+}
