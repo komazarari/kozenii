@@ -14,7 +14,7 @@ describe MembersController do
   describe "GET 'index'" do
     it "returns http success" do
       get 'index'
-      response.should be_success
+      expect(response).to be_success
     end
   end
 
@@ -23,14 +23,14 @@ describe MembersController do
       item = Member.create! valid_attributes
       get :show, { id: item.id }
       expect(assigns(:member)).to eq item
-      response.should be_success
+      expect(response).to be_success
     end
   end
 
   describe "GET 'new'" do
     it "returns http success" do
       get 'new'
-      response.should be_success
+      expect(response).to be_success
     end
   end
 
@@ -44,32 +44,32 @@ describe MembersController do
 
       it "assigns a newly created member as @member" do
         post :create, {member: valid_attributes}
-        assigns(:member).should be_a(Member)
-        assigns(:member).should be_persisted
+        expect(assigns(:member)).to be_a(Member)
+        expect(assigns(:member)).to be_persisted
       end
 
       it "redirects to the members" do
         post :create, {member: valid_attributes}
-        response.should redirect_to(members_url)
+        expect(response).to redirect_to(members_url)
       end
     end
 
     describe "with invalid params" do
       before do
-        Member.any_instance.stub(:save).and_return(false)
-        Member.any_instance.stub(:errors).and_return({ fullname: "invalid" })
+        allow_any_instance_of(Member).to receive(:save).and_return(false)
+        allow_any_instance_of(Member).to receive(:errors).and_return({ fullname: "invalid" })
       end
 
       it "assigns a newly created but unsaved member as @member" do
         # Trigger the behavior that occurs when invalid params are submitted
         post :create, {:member => { "fullname" => "" }}, valid_session
-        assigns(:member).should be_a_new(Member)
+        expect(assigns(:member)).to be_a_new(Member)
       end
 
       it "re-renders the 'new' template" do
         # Trigger the behavior that occurs when invalid params are submitted
         post :create, {:member => { "fullname" => "" }}, valid_session
-        response.should render_template("new")
+        expect(response).to render_template("new")
       end
     end
   end

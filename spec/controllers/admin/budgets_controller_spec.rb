@@ -37,7 +37,7 @@ describe Admin::BudgetsController do
     it "assigns all budgets as @budgets" do
       budget = Budget.create! valid_attributes
       get :index, {}, valid_session
-      assigns(:budgets).should eq([budget])
+      expect(assigns(:budgets)).to eq([budget])
     end
   end
 
@@ -45,14 +45,14 @@ describe Admin::BudgetsController do
     it "assigns the requested budget as @budget" do
       budget = Budget.create! valid_attributes
       get :show, {:id => budget.to_param}, valid_session
-      assigns(:budget).should eq(budget)
+      expect(assigns(:budget)).to eq(budget)
     end
   end
 
   describe "GET new" do
     it "assigns a new budget as @budget" do
       get :new, {}, valid_session
-      assigns(:budget).should be_a_new(Budget)
+      expect(assigns(:budget)).to be_a_new(Budget)
     end
   end
 
@@ -60,7 +60,7 @@ describe Admin::BudgetsController do
     it "assigns the requested budget as @budget" do
       budget = Budget.create! valid_attributes
       get :edit, {:id => budget.to_param}, valid_session
-      assigns(:budget).should eq(budget)
+      expect(assigns(:budget)).to eq(budget)
     end
   end
 
@@ -74,32 +74,32 @@ describe Admin::BudgetsController do
 
       it "assigns a newly created budget as @budget" do
         post :create, {:budget => valid_attributes}, valid_session
-        assigns(:budget).should be_a(Budget)
-        assigns(:budget).should be_persisted
+        expect(assigns(:budget)).to be_a(Budget)
+        expect(assigns(:budget)).to be_persisted
       end
 
       it "redirects to the created budget" do
         post :create, {:budget => valid_attributes}, valid_session
-        response.should redirect_to(admin_budgets_url)
+        expect(response).to redirect_to(admin_budgets_url)
       end
     end
 
     describe "with invalid params" do
       before do
-        Budget.any_instance.stub(:save).and_return(false)
-        Budget.any_instance.stub(:errors).and_return({ amount: "invalid" })
+        allow_any_instance_of(Budget).to receive(:save).and_return(false)
+        allow_any_instance_of(Budget).to receive(:errors).and_return({ amount: "invalid" })
       end
 
       it "assigns a newly created but unsaved budget as @budget" do
         # Trigger the behavior that occurs when invalid params are submitted
         post :create, {:budget => { "title" => "invalid value" }}, valid_session
-        assigns(:budget).should be_a_new(Budget)
+        expect(assigns(:budget)).to be_a_new(Budget)
       end
 
       it "re-renders the 'new' template" do
         # Trigger the behavior that occurs when invalid params are submitted
         post :create, {:budget => { "title" => "invalid value" }}, valid_session
-        response.should render_template("new")
+        expect(response).to render_template("new")
       end
     end
   end
@@ -112,40 +112,40 @@ describe Admin::BudgetsController do
         # specifies that the Budget created on the previous line
         # receives the :update_attributes message with whatever params are
         # submitted in the request.
-        Budget.any_instance.should_receive(:update).with({ "title" => "MyString" })
+        expect_any_instance_of(Budget).to receive(:update).with({ "title" => "MyString" })
         put :update, {:id => budget.to_param, :budget => { "title" => "MyString" }}, valid_session
       end
 
       it "assigns the requested budget as @budget" do
         budget = Budget.create! valid_attributes
         put :update, {:id => budget.to_param, :budget => valid_attributes}, valid_session
-        assigns(:budget).should eq(budget)
+        expect(assigns(:budget)).to eq(budget)
       end
 
       it "redirects to the budget" do
         budget = Budget.create! valid_attributes
         put :update, {:id => budget.to_param, :budget => valid_attributes}, valid_session
-        response.should redirect_to(admin_budgets_url)
+        expect(response).to redirect_to(admin_budgets_url)
       end
     end
 
     describe "with invalid params" do
       let(:budget) { Budget.create! valid_attributes }
       before do
-        Budget.any_instance.stub(:save).and_return(false)
-        Budget.any_instance.stub(:errors).and_return({ amount: "invalid" })
+        allow_any_instance_of(Budget).to receive(:save).and_return(false)
+        allow_any_instance_of(Budget).to receive(:errors).and_return({ amount: "invalid" })
       end
 
       it "assigns the budget as @budget" do
         # Trigger the behavior that occurs when invalid params are submitted
         put :update, {:id => budget.to_param, :budget => { title: "" }}, valid_session
-        assigns(:budget).should eq(budget)
+        expect(assigns(:budget)).to eq(budget)
       end
 
       it "re-renders the 'edit' template" do
         # Trigger the behavior that occurs when invalid params are submitted
         put :update, {:id => budget.to_param, :budget => { title: "" }}, valid_session
-        response.status.should eq 302
+        expect(response.status).to eq 302
       end
     end
   end
@@ -161,7 +161,7 @@ describe Admin::BudgetsController do
     it "redirects to the budgets list" do
       budget = Budget.create! valid_attributes
       delete :destroy, {:id => budget.to_param}, valid_session
-      response.should redirect_to(admin_budgets_url)
+      expect(response).to redirect_to(admin_budgets_url)
     end
   end
 
