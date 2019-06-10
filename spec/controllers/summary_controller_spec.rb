@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe SummaryController do
   before  do
-    sign_in FactoryGirl.create(:user)
+    sign_in FactoryBot.create(:user)
   end
   let(:valid_session) { {} }
   let(:season) { Season.create }

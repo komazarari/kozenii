@@ -3,7 +3,7 @@ When(/^I click a link to create "(.*?)"$/) do |arg1|
 end
 
 Given(/^Some "(.*?)" items exist$/) do |arg1|
-  5.times { FactoryGirl.create(arg1.to_sym) }
+  5.times { FactoryBot.create(arg1.to_sym) }
 end
 
 Then(/^I should see "(.*?)" items$/) do |arg1|

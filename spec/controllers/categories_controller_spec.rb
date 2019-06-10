@@ -29,7 +29,7 @@ describe CategoriesController do
   # in order to pass any filters (e.g. authentication) defined in
   # CategoriesController. Be sure to keep this updated too.
   before  do
-    sign_in FactoryGirl.create(:user)
+    sign_in FactoryBot.create(:user)
   end
   let(:valid_session) { {} }
 
