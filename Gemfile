@@ -1,8 +1,9 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 4.2.0'
+gem 'rails', '~> 4.2.11'
 
+gem 'json', github: 'flori/json', branch: 'v1.8'
 gem 'mysql2'
 
 # Use SCSS for stylesheets
@@ -26,7 +27,7 @@ gem 'responders', '~> 2.0'
 gem 'coffee-rails'
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-gem 'therubyracer', platforms: :ruby
+gem 'therubyracer', '~> 0.12.3', platforms: :ruby
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -56,25 +57,25 @@ gem 'unicorn'
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
-group :test, :development do
-  gem "rspec-rails" , "~>2"
-  #  gem "rspec-rails" , "<2.99"
-  gem 'factory_girl_rails'
-  gem "spring"
-  gem "spring-commands-rspec"
-  gem 'guard-spring'
-end
+# group :test, :development do
+#   gem "rspec-rails" , "~>2"
+#   #  gem "rspec-rails" , "<2.99"
+#   gem 'factory_girl_rails'
+#   gem "spring"
+#   gem "spring-commands-rspec"
+#   gem 'guard-spring'
+# end
 
-group :development do
-  gem 'pry-rails'
-  gem 'meta_request'
-  gem 'quiet_assets'
-end
+# group :development do
+#   gem 'pry-rails'
+#   gem 'meta_request'
+#   gem 'quiet_assets'
+# end
 
-group :test do
-  gem 'cucumber-rails', :require => false
-  gem 'database_cleaner', '~> 1'
-  gem 'capybara'
-  gem 'poltergeist'
-  gem "simplecov", require: false
-end
+# group :test do
+#   gem 'cucumber-rails', :require => false
+#   gem 'database_cleaner', '~> 1'
+#   gem 'capybara'
+#   gem 'poltergeist'
+#   gem "simplecov", require: false
+# end
