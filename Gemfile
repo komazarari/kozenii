@@ -68,10 +68,10 @@ end
 #   gem 'quiet_assets'
 # end
 
-# group :test do
+group :test do
 #   gem 'cucumber-rails', :require => false
-#   gem 'database_cleaner', '~> 1'
+  gem 'database_cleaner'
 #   gem 'capybara'
 #   gem 'poltergeist'
 #   gem "simplecov", require: false
-# end
+end
