@@ -7,7 +7,7 @@ describe MembersController do
   end
 
   before  do
-    sign_in FactoryGirl.create(:user)
+    sign_in FactoryBot.create(:user)
   end
   let(:valid_session) { {} }
 

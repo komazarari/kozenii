@@ -57,14 +57,10 @@ gem 'unicorn'
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
-# group :test, :development do
-#   gem "rspec-rails" , "~>2"
-#   #  gem "rspec-rails" , "<2.99"
-#   gem 'factory_girl_rails'
-#   gem "spring"
-#   gem "spring-commands-rspec"
-#   gem 'guard-spring'
-# end
+group :test, :development do
+  gem "rspec-rails" , "~>3"
+  gem 'factory_bot_rails'
+end
 
 # group :development do
 #   gem 'pry-rails'

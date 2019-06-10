@@ -1,6 +1,6 @@
 # Read about factories at https://github.com/thoughtbot/factory_girl
 
-FactoryGirl.define do
+FactoryBot.define do
   sequence(:used_date) { |n| Date.new(2013, 4, 1) + n*3 }
   sequence(:amount) { |n| n*1024 }
   sequence(:description) { |n| "buy #{n} note(s)" }
@@ -12,7 +12,7 @@ FactoryGirl.define do
     description
     user_note
     member
-    status    "open"
-    valid_req   true
+    status    { "open" }
+    valid_req   { true }
   end
 end
