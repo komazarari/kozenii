@@ -12,7 +12,7 @@ describe ExpensesController do
   describe "GET 'index'" do
     it "returns http success" do
       get :index
-      response.should be_success
+      expect(response).to be_success
     end
   end
 
@@ -21,14 +21,14 @@ describe ExpensesController do
       item = Expense.create! valid_attributes
       get :show, { id: item.id }
       expect(assigns(:expense)).to eq item
-      response.should be_success
+      expect(response).to be_success
     end
   end
 
   describe "GET 'new'" do
     it "returns http success" do
       get :new, { expense: valid_attributes }
-      response.should be_success
+      expect(response).to be_success
     end
   end
 
@@ -42,29 +42,29 @@ describe ExpensesController do
 
       it "assigns a newly created expense as @expense" do
         post :create, {expense: valid_attributes}
-        assigns(:expense).should be_a(Expense)
-        assigns(:expense).should be_persisted
+        expect(assigns(:expense)).to be_a(Expense)
+        expect(assigns(:expense)).to be_persisted
       end
 
       it "redirects to the expenses" do
         post :create, {expense: valid_attributes}
-        response.should redirect_to(expenses_url)
+        expect(response).to redirect_to(expenses_url)
       end
     end
 
     describe "with invalid params" do
       it "assigns a newly created but unsaved expense as @expense" do
         # Trigger the behavior that occurs when invalid params are submitted
-        Expense.any_instance.stub(:save).and_return(false)
+        allow_any_instance_of(Expense).to receive(:save).and_return(false)
         post :create, {expense: { amount: "invalid value" }}
-        assigns(:expense).should be_a_new(Expense)
+        expect(assigns(:expense)).to be_a_new(Expense)
       end
 
       it "re-renders the 'new' template" do
         # Trigger the behavior that occurs when invalid params are submitted
-        Expense.any_instance.stub(:save).and_return(false)
+        allow_any_instance_of(Expense).to receive(:save).and_return(false)
         post :create, {expense: { amount: "invalid value" }}
-        response.status.should eq 302
+        expect(response.status).to eq 302
       end
     end
   end

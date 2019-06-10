@@ -16,14 +16,14 @@ describe Admin::GroupsController do
     it "assigns all groups as @groups" do
       group = Group.create! valid_attributes
       get :index, {}, valid_session
-      assigns(:groups).should eq([group])
+      expect(assigns(:groups)).to eq([group])
     end
   end
 
   describe "GET new" do
     it "assigns a new group as @group" do
       get :new, {}, valid_session
-      assigns(:group).should be_a_new(Group)
+      expect(assigns(:group)).to be_a_new(Group)
     end
   end
 
@@ -31,7 +31,7 @@ describe Admin::GroupsController do
     it "assigns the requested group as @group" do
       group = Group.create! valid_attributes
       get :edit, {:id => group.to_param}, valid_session
-      assigns(:group).should eq(group)
+      expect(assigns(:group)).to eq(group)
     end
   end
 
@@ -45,32 +45,32 @@ describe Admin::GroupsController do
 
       it "assigns a newly created group as @group" do
         post :create, {:group => valid_attributes}, valid_session
-        assigns(:group).should be_a(Group)
-        assigns(:group).should be_persisted
+        expect(assigns(:group)).to be_a(Group)
+        expect(assigns(:group)).to be_persisted
       end
 
       it "redirects to the created group" do
         post :create, {:group => valid_attributes}, valid_session
-        response.should redirect_to(admin_groups_url)
+        expect(response).to redirect_to(admin_groups_url)
       end
     end
 
     describe "with invalid params" do
       before do
-        Group.any_instance.stub(:save).and_return(false)
-        Group.any_instance.stub(:errors).and_return({ name: "invalid" })
+        allow_any_instance_of(Group).to receive(:save).and_return(false)
+        allow_any_instance_of(Group).to receive(:errors).and_return({ name: "invalid" })
       end
 
       it "assigns a newly created but unsaved group as @group" do
         # Trigger the behavior that occurs when invalid params are submitted
         post :create, {:group => { "name" => "invalid value" }}, valid_session
-        assigns(:group).should be_a_new(Group)
+        expect(assigns(:group)).to be_a_new(Group)
       end
 
       it "re-renders the 'new' template" do
         # Trigger the behavior that occurs when invalid params are submitted
         post :create, {:group => { "name" => "invalid value" }}, valid_session
-        response.should render_template("new")
+        expect(response).to render_template("new")
       end
     end
   end
@@ -83,40 +83,40 @@ describe Admin::GroupsController do
         # specifies that the Group created on the previous line
         # receives the :update_attributes message with whatever params are
         # submitted in the request.
-        Group.any_instance.should_receive(:update).with({ "name" => "MyString" })
+        expect_any_instance_of(Group).to receive(:update).with({ "name" => "MyString" })
         put :update, {:id => group.to_param, :group => { "name" => "MyString" }}, valid_session
       end
 
       it "assigns the requested group as @group" do
         group = Group.create! valid_attributes
         put :update, {:id => group.to_param, :group => valid_attributes}, valid_session
-        assigns(:group).should eq(group)
+        expect(assigns(:group)).to eq(group)
       end
 
       it "redirects to the group" do
         group = Group.create! valid_attributes
         put :update, {:id => group.to_param, :group => valid_attributes}, valid_session
-        response.should redirect_to(admin_groups_url)
+        expect(response).to redirect_to(admin_groups_url)
       end
     end
 
     describe "with invalid params" do
       let(:group) { Group.create! valid_attributes }
       before do
-        Group.any_instance.stub(:save).and_return(false)
-        Group.any_instance.stub(:errors).and_return({ name: "invalid" })
+        allow_any_instance_of(Group).to receive(:save).and_return(false)
+        allow_any_instance_of(Group).to receive(:errors).and_return({ name: "invalid" })
       end
 
       it "assigns the group as @group" do
         # Trigger the behavior that occurs when invalid params are submitted
         put :update, {:id => group.to_param, :group => { name: "" }}, valid_session
-        assigns(:group).should eq(group)
+        expect(assigns(:group)).to eq(group)
       end
 
       it "re-renders the 'edit' template" do
         # Trigger the behavior that occurs when invalid params are submitted
         put :update, {:id => group.to_param, :group => { name: "" }}, valid_session
-        response.status.should eq 302
+        expect(response.status).to eq 302
       end
     end
   end

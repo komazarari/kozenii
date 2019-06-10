@@ -25,7 +25,7 @@ describe SummaryController do
 
     it "returns http success" do
       get 'show'
-      response.should be_success
+      expect(response).to be_success
     end
   end
 
