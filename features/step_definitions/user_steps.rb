@@ -10,7 +10,7 @@ end
 def create_user
   visitor
   delete_user
-  @user = FactoryGirl.create(:user, @visitor)
+  @user = FactoryBot.create(:user, @visitor)
 end
 
 def sign_in

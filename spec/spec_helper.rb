@@ -2,8 +2,7 @@
 ENV["RAILS_ENV"] = 'test'
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
-require 'rspec/autorun'
-require 'simplecov'
+# require 'simplecov'
 
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
@@ -41,7 +40,7 @@ RSpec.configure do |config|
   #     --seed 1234
   config.order = "random"
 
-  config.include(FactoryGirl::Syntax::Methods)
+  config.include(FactoryBot::Syntax::Methods)
 
   config.before(:suite) do
     DatabaseCleaner.strategy = :transaction
@@ -51,7 +50,7 @@ RSpec.configure do |config|
   config.before(:each) do
     begin
       DatabaseCleaner.start
-      FactoryGirl.lint
+      FactoryBot.lint
     ensure
       DatabaseCleaner.clean
     end

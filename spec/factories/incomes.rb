@@ -1,6 +1,6 @@
 # Read about factories at https://github.com/thoughtbot/factory_girl
 
-FactoryGirl.define do
+FactoryBot.define do
   sequence(:obtained_date) { |n| Date.new(2014, 4, 1) + n*3 }
 
   factory :income do
@@ -9,6 +9,6 @@ FactoryGirl.define do
     description
     comment
     member
-    valid_req true
+    valid_req { true }
   end
 end

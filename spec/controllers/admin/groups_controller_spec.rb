@@ -8,7 +8,7 @@ describe Admin::GroupsController do
   # Admin::BudgetsController. Be sure to keep this updated too.
   let(:valid_session) { {} }
   before  do
-    sign_in FactoryGirl.create(:user, { role: "admin" })
+    sign_in FactoryBot.create(:user, { role: "admin" })
   end
 
 

@@ -5,7 +5,7 @@ describe Admin::LinkMenusController do
 
   let(:valid_session) { {} }
   before  do
-    sign_in FactoryGirl.create(:user, { role: "admin" })
+    sign_in FactoryBot.create(:user, { role: "admin" })
   end
 
   describe "GET 'index'" do
