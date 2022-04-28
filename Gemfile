@@ -1,9 +1,10 @@
 source 'https://rubygems.org'
+# git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 4.2.11'
 
-gem 'json', github: 'flori/json', branch: 'v1.8'
+# gem 'json'
 gem 'mysql2'
 
 # Use SCSS for stylesheets
@@ -15,6 +16,7 @@ gem 'uglifier', '>= 1.3.0'
 
 gem 'less-rails'
 gem 'twitter-bootstrap-rails', '~>3.0'
+gem 'sprockets', '< 4'
 
 gem 'devise'
 gem 'haml-rails'
@@ -27,7 +29,7 @@ gem 'responders', '~> 2.0'
 gem 'coffee-rails'
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-gem 'therubyracer', '~> 0.12.3', platforms: :ruby
+gem 'therubyracer', platforms: :ruby
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
